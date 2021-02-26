@@ -3,6 +3,7 @@ import UIKit
 struct Book {
     let title: String
     let author: String
+    var review: String?
     
     var image: UIImage {
         // If there's an image for the book then load, or set it with a symbol by default.
