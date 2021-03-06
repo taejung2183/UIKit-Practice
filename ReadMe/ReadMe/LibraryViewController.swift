@@ -1,7 +1,8 @@
 import UIKit
 
 class LibraryHeaderView: UITableViewHeaderFooterView {
-    
+    static let reuseIdentifier = "\(LibraryHeaderView.self)"
+    @IBOutlet var titleLabel: UILabel!
 }
 
 class LibraryViewController: UITableViewController {
@@ -15,7 +16,8 @@ class LibraryViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        tableView.register(UINib(nibName: "\(LibraryHeaderView.self)", bundle: nil), forHeaderFooterViewReuseIdentifier: LibraryHeaderView.reuseIdentifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,6 +28,20 @@ class LibraryViewController: UITableViewController {
     // MARK:- Delegate
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return section == 1 ? "Read Me!" : nil
+        
+    }
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 { return nil }
+        
+        // Deqeue reusable Header just as we did for the reusable cell.
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: LibraryHeaderView.reuseIdentifier) as? LibraryHeaderView else { return nil }
+        
+        headerView.titleLabel.text = "Read Me!"
+        return headerView
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section != 0 ? 60 : 0
     }
     
     // MARK:- Data Sorce
