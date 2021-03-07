@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WAN-Jc-SOG">
-    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -116,6 +116,7 @@
                                 <connections>
                                     <outlet property="authorLabel" destination="5H6-DT-CMI" id="diP-0c-zkO"/>
                                     <outlet property="bookThumbnail" destination="bVw-XL-pXy" id="2yO-gr-twB"/>
+                                    <outlet property="readMeBookmark" destination="Mqh-KQ-579" id="O2a-80-XkV"/>
                                     <outlet property="reviewLabel" destination="sf6-OJ-s8t" id="hOS-Un-hLL"/>
                                     <outlet property="titleLabel" destination="VLt-kd-mns" id="zRW-Tj-feQ"/>
                                     <segue destination="KeN-VT-nwQ" kind="show" destinationCreationSelector="showDetailView:" id="eKy-pE-u1w"/>
@@ -257,7 +258,18 @@
                             <outlet property="delegate" destination="TXQ-S9-vzt" id="ppQ-6S-Tm2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Lwh-2n-qXU"/>
+                    <navigationItem key="navigationItem" id="Lwh-2n-qXU">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hnf-bA-TtR">
+                            <connections>
+                                <action selector="cancel" destination="TXQ-S9-vzt" id="oRU-m5-xxu"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="qnK-gm-uWw">
+                            <connections>
+                                <action selector="saveNewBook" destination="TXQ-S9-vzt" id="mZ0-3k-kJb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="authorTextField" destination="Erb-7T-Bnd" id="b40-C1-Ju2"/>
                         <outlet property="bookImageView" destination="1qU-fE-8MG" id="Sd4-XW-d8C"/>
@@ -266,7 +278,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s7N-xF-VrW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2445" y="482"/>
+            <point key="canvasLocation" x="2488" y="-65"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="rZf-jb-xMu">
@@ -297,6 +309,9 @@
                                                             <state key="normal" title="Button" image="bookmark.fill" catalog="system">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="48"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="toggleReadMe" destination="KeN-VT-nwQ" eventType="touchUpInside" id="yMm-Ir-9V5"/>
+                                                            </connections>
                                                         </button>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NPJ-hJ-dZE">
                                                             <rect key="frame" x="93.5" y="0.0" width="280.5" height="35"/>
@@ -409,17 +424,24 @@
                             <outlet property="delegate" destination="KeN-VT-nwQ" id="yJj-No-nLU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Lux-HU-Hlz"/>
+                    <navigationItem key="navigationItem" id="Lux-HU-Hlz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="RMh-xN-LQw">
+                            <connections>
+                                <action selector="saveChange" destination="KeN-VT-nwQ" id="95F-hP-DMZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="authorLabel" destination="0gZ-og-V4E" id="NpG-mV-KgI"/>
                         <outlet property="imageView" destination="LgS-nO-YZ4" id="8hZ-sn-1C5"/>
+                        <outlet property="readMeButton" destination="EHR-cN-P67" id="Smv-yh-kCr"/>
                         <outlet property="reviewTextView" destination="o4D-6S-eMb" id="92u-vb-2ZV"/>
                         <outlet property="titleLabel" destination="3B2-rZ-8yS" id="kit-4S-57y"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mRa-yU-swQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2459" y="-179"/>
+            <point key="canvasLocation" x="2513" y="589"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="um5-3o-Qpp">

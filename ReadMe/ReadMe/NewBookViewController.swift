@@ -10,6 +10,23 @@ class NewBookViewController: UITableViewController {
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var authorTextField: UITextField!
     @IBOutlet var bookImageView: UIImageView!
+   
+    var newBookImage: UIImage?
+    
+    @IBAction func cancel() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func saveNewBook() {
+        guard let title = titleTextField.text,
+              let author = authorTextField.text,
+              !title.isEmpty,
+              !author.isEmpty
+        else { return }
+        
+        Library.addNew(book: Book(title: title, author: author, readMe: true, image: newBookImage))
+        navigationController?.popViewController(animated: true)
+    }
     
     @IBAction func updateImage() {
         let imagePicker = UIImagePickerController()
@@ -29,6 +46,8 @@ extension NewBookViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
         bookImageView.image = selectedImage
+        // Save only selected image, this way we'll only save the image that the user has actually chosen one.
+        newBookImage = selectedImage
         dismiss(animated: true)
     }
 }
