@@ -166,6 +166,7 @@ enum Library {
     saveAllBooks()
   }
   
+  // Checking to make sure the destination book exists in the array, then removing the book it needs to move and adding it back at the correct destinatino index.
   static func reorderBooks(bookToMove: Book, bookAtDestination: Book) {
     let destinationIndex = Library.books.firstIndex(of: bookAtDestination) ?? 0
     books.removeAll(where: { $0.title == bookToMove.title })
