@@ -37,5 +37,9 @@ import UIKit
 
 final class ContentCell: UICollectionViewCell {
   static let reuseIdentifier = String(describing: ContentCell.self)
-  @IBOutlet weak var textLabel: UILabel!
+    
+    @IBOutlet weak var contentTitle: UILabel!
+    @IBOutlet weak var videoTitle: UILabel!
+    @IBOutlet weak var videoUrl: UILabel!
+    
 }

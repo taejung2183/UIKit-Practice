@@ -38,13 +38,15 @@ import UIKit
 
 final class TutorialDetailViewController: UIViewController {
     
+    static let identifier = String(describing: TutorialDetailViewController.self)
     private let tutorial: Tutorial
-    
+
     @IBOutlet weak var tutorialCoverImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var publishDateLabel: UILabel!
     @IBOutlet weak var queueButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    private var dataSource: UICollectionViewDiffableDataSource<Section, Video>!
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -77,6 +79,14 @@ final class TutorialDetailViewController: UIViewController {
         
         let buttonTitle = tutorial.isQueued ? "Remove from queue" : "Add to queue"
         queueButton.setTitle(buttonTitle, for: .normal)
+        
+        // Register supplementary view.
+        collectionView.register(TitleSupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleSupplementaryView.reuseIdentifier)
+        
+        // Collection view.
+        collectionView.collectionViewLayout = configureCollectionViewLayout()
+        configureDataSource()
+        configureSnapshot()
     }
     
     @IBAction func toggleQueued() {
@@ -89,5 +99,73 @@ final class TutorialDetailViewController: UIViewController {
             
             self.queueButton.layoutIfNeeded()
         }
+    }
+}
+
+extension TutorialDetailViewController {
+    func configureCollectionViewLayout() -> UICollectionViewCompositionalLayout {
+        let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(100))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+            
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(100))
+            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+            
+            let section = NSCollectionLayoutSection(group: group)
+            
+            section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
+            section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+            section.interGroupSpacing = 10
+            
+            return section
+        }
+        
+        return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
+    }
+}
+
+extension TutorialDetailViewController {
+    func configureDataSource() {
+        typealias ContentDataSource = UICollectionViewDiffableDataSource<Section, Video>
+        dataSource = ContentDataSource(collectionView: collectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, video: Video) -> UICollectionViewCell? in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContentCell.reuseIdentifier, for: indexPath) as? ContentCell else {
+                return nil
+            }
+
+            //cell.contentTitle.text = "Temporary title"
+            cell.videoTitle.text = video.title
+            cell.videoUrl.text = video.url
+            
+            return cell
+        }
+        
+        // Add supplementary view.
+        dataSource.supplementaryViewProvider = { [weak self] (collectionView: UICollectionView, kind: String, IndexPath: IndexPath) -> UICollectionReusableView? in
+            // Avoid optional chaining with (let self = self)
+            if let self = self, let titleSupplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleSupplementaryView.reuseIdentifier, for: IndexPath) as? TitleSupplementaryView {
+                
+                // To set the title supplementary view, you need to get the tutorial collection for the current section.
+                // In order to do this, call the snapshot method on the current data source to get the current snapshot, query the list of section identifiers using the index path.
+                let section = self.dataSource.snapshot().sectionIdentifiers[IndexPath.section]
+                titleSupplementaryView.textLabel.text = section.title
+                
+                return titleSupplementaryView
+            } else {
+                return nil
+            }
+        }
+    }
+
+    func configureSnapshot() {
+        var currentSnapshot = NSDiffableDataSourceSnapshot<Section, Video>()
+        
+        tutorial.content.forEach { section in
+            currentSnapshot.appendSections([section])
+            currentSnapshot.appendItems(section.videos)
+        }
+        
+        dataSource.apply(currentSnapshot, animatingDifferences: false)
     }
 }

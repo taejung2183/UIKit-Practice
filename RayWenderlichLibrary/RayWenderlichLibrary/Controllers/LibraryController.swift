@@ -80,7 +80,7 @@ extension LibraryController {
             
             let section = NSCollectionLayoutSection(group: group)
             
-            // This properties below allows you to customize the scrolling behavior of groups inside a container.
+            // These properties below allows you to customize the scrolling behavior of groups inside a container.
             
             // Continuous orthogonal scrolling behavior means that when you scroll, the scroll view eventually decelerates and stops wherever.
             section.orthogonalScrollingBehavior = .continuous
@@ -157,11 +157,16 @@ extension LibraryController {
 
 // MARK: - UICollectionViewDelegate -
 
+// When a user selects an item, segue to the tutorial detail view.
 extension LibraryController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // Find user selected item.
-        if let tutorial = dataSource.itemIdentifier(for: indexPath) {
-            
+        if let tutorial = dataSource.itemIdentifier(for: indexPath),
+           let tutorialDetailController = storyboard?.instantiateViewController(identifier:  TutorialDetailViewController.identifier, creator: { coder in
+            return TutorialDetailViewController(coder: coder, tutorial: tutorial)
+           }) {
+            // Present the tutorial detail controller on screen.
+            show(tutorialDetailController, sender: nil)
         }
     }
 }

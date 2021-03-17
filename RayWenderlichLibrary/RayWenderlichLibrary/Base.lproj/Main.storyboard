@@ -232,7 +232,7 @@
         <!--Tutorial Detail View Controller-->
         <scene sceneID="BLL-oU-84i">
             <objects>
-                <viewController id="irX-xb-ad7" customClass="TutorialDetailViewController" customModule="RWLibrary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TutorialDetailViewController" id="irX-xb-ad7" customClass="TutorialDetailViewController" customModule="RWLibrary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gDa-MT-8gM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -271,46 +271,48 @@
                                 <rect key="frame" x="6" y="376" width="402" height="480"/>
                                 <color key="backgroundColor" name="rw-bg"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZZX-l5-O1L">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="402" height="144"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ContentCell" id="HIy-va-JEr" customClass="ContentCell" customModule="RWLibrary" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="402" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="114.5" height="144"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mff-PL-nub">
-                                            <rect key="frame" x="0.0" y="0.0" width="402" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="114.5" height="144"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="egS-yD-CdY">
-                                                    <rect key="frame" x="10" y="43.5" width="382" height="0.5"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="0.5" id="UpG-LM-TNS"/>
-                                                    </constraints>
-                                                </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZS-5D-22u">
-                                                    <rect key="frame" x="16" y="8" width="370" height="27.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="clr-gA-Ero">
+                                                    <rect key="frame" x="20" y="48" width="74.5" height="48"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="video title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYF-fG-lTq">
+                                                            <rect key="frame" x="0.0" y="0.0" width="74.5" height="20.5"/>
+                                                            <color key="backgroundColor" red="0.77454828279999999" green="1" blue="0.46816767999999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="video url" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCO-6F-gjy">
+                                                            <rect key="frame" x="4.5" y="27.5" width="65.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="egS-yD-CdY" secondAttribute="trailing" constant="10" id="0RU-Z0-5aB"/>
-                                                <constraint firstItem="egS-yD-CdY" firstAttribute="leading" secondItem="mff-PL-nub" secondAttribute="leading" constant="10" id="3QE-IP-vn9"/>
-                                                <constraint firstItem="KZS-5D-22u" firstAttribute="leading" secondItem="mff-PL-nub" secondAttribute="leading" constant="16" id="5Ml-OS-LOB"/>
-                                                <constraint firstAttribute="bottom" secondItem="egS-yD-CdY" secondAttribute="bottom" id="RXI-Q4-iW8"/>
-                                                <constraint firstAttribute="trailing" secondItem="KZS-5D-22u" secondAttribute="trailing" constant="16" id="doZ-vl-5On"/>
-                                                <constraint firstItem="egS-yD-CdY" firstAttribute="top" secondItem="KZS-5D-22u" secondAttribute="bottom" constant="8" id="f5Q-w4-7ue"/>
-                                                <constraint firstItem="KZS-5D-22u" firstAttribute="top" secondItem="mff-PL-nub" secondAttribute="top" constant="8" id="jr7-wm-j1U"/>
+                                                <constraint firstItem="clr-gA-Ero" firstAttribute="centerX" secondItem="mff-PL-nub" secondAttribute="centerX" id="I3H-cr-z1M"/>
+                                                <constraint firstItem="clr-gA-Ero" firstAttribute="leading" secondItem="mff-PL-nub" secondAttribute="leading" constant="20" id="O8Q-KE-ewD"/>
+                                                <constraint firstItem="clr-gA-Ero" firstAttribute="centerY" secondItem="mff-PL-nub" secondAttribute="centerY" id="Q0w-XB-5ec"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="402" height="44"/>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <connections>
-                                            <outlet property="textLabel" destination="KZS-5D-22u" id="AMM-6o-3Tg"/>
+                                            <outlet property="videoTitle" destination="tYF-fG-lTq" id="AQD-sr-IAz"/>
+                                            <outlet property="videoUrl" destination="aCO-6F-gjy" id="RvW-uk-PLv"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -332,7 +334,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="hmq-ZX-w11" id="1xH-93-DDe"/>
+                        <outlet property="collectionView" destination="hmq-ZX-w11" id="9PR-fA-yMk"/>
                         <outlet property="publishDateLabel" destination="YYk-Mp-sbz" id="AlK-bL-lYC"/>
                         <outlet property="queueButton" destination="erd-si-z7l" id="hYr-oL-2tO"/>
                         <outlet property="titleLabel" destination="3r3-oF-TMt" id="WC5-gV-3C3"/>
@@ -421,6 +423,9 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
