@@ -39,6 +39,8 @@ import UIKit
 final class LibraryController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    // TutorialCollection for section type because it contains individual tutorial.
     private var dataSource: UICollectionViewDiffableDataSource<TutorialCollection, Tutorial>!
     // Property for a reference to the data from the plist.
     private let tutorialCollections = DataSource.shared.tutorials
@@ -126,6 +128,7 @@ extension LibraryController {
         
         // Add supplementary view. Register supplementary view to the collection view in setupView().
         // Capture self weakly to avoid reference cycles Since you're referencing self inside of a closure.
+        
         dataSource.supplementaryViewProvider = { [weak self] (collectionView: UICollectionView, kind: String, IndexPath: IndexPath) -> UICollectionReusableView? in
             // Avoid optional chaining with (let self = self)
             if let self = self, let titleSupplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleSupplementaryView.reuseIdentifier, for: IndexPath) as? TitleSupplementaryView {

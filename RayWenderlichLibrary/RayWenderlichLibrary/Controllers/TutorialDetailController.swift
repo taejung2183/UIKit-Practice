@@ -46,6 +46,8 @@ final class TutorialDetailViewController: UIViewController {
     @IBOutlet weak var publishDateLabel: UILabel!
     @IBOutlet weak var queueButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    // Section for the section type since the section contained individual videos.
     private var dataSource: UICollectionViewDiffableDataSource<Section, Video>!
     
     required init?(coder: NSCoder) {
@@ -90,6 +92,8 @@ final class TutorialDetailViewController: UIViewController {
     }
     
     @IBAction func toggleQueued() {
+        tutorial.isQueued.toggle()
+        
         UIView.performWithoutAnimation {
             if tutorial.isQueued {
                 queueButton.setTitle("Remove from queue", for: .normal)
@@ -105,23 +109,33 @@ final class TutorialDetailViewController: UIViewController {
 extension TutorialDetailViewController {
     func configureCollectionViewLayout() -> UICollectionViewCompositionalLayout {
         let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(100))
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
             
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(100))
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(80))
             let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
             
             let section = NSCollectionLayoutSection(group: group)
             
-            section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
-            section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
-            section.interGroupSpacing = 10
+//            section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
+//            section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+//            section.interGroupSpacing = 10
+            
+            let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
+            let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .topLeading)
+            section.boundarySupplementaryItems = [sectionHeader]
             
             return section
         }
         
         return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
+        
+        // You can give a configuration like this below.
+        
+        //let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        //configuration.scrollDirection = .horizontal
+        //return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider, configuration: configuration )
     }
 }
 
@@ -134,7 +148,6 @@ extension TutorialDetailViewController {
                 return nil
             }
 
-            //cell.contentTitle.text = "Temporary title"
             cell.videoTitle.text = video.title
             cell.videoUrl.text = video.url
             
@@ -142,7 +155,11 @@ extension TutorialDetailViewController {
         }
         
         // Add supplementary view.
-        dataSource.supplementaryViewProvider = { [weak self] (collectionView: UICollectionView, kind: String, IndexPath: IndexPath) -> UICollectionReusableView? in
+        dataSource.supplementaryViewProvider = { [weak self] (
+            collectionView: UICollectionView,
+            kind: String,
+            IndexPath: IndexPath) -> UICollectionReusableView? in
+            
             // Avoid optional chaining with (let self = self)
             if let self = self, let titleSupplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleSupplementaryView.reuseIdentifier, for: IndexPath) as? TitleSupplementaryView {
                 
