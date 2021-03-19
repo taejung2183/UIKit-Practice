@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4623728925FE2ADF009CB993 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4623728825FE2ADF009CB993 /* DataSource.swift */; };
+		4625DB5426044379000110CC /* BadgeSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4625DB5326044379000110CC /* BadgeSupplementaryView.swift */; };
 		46971A1E25FF7BC80092CA65 /* TitleSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46971A1D25FF7BC80092CA65 /* TitleSupplementaryView.swift */; };
 		97D3041723615DA600307413 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D3041623615DA600307413 /* AppDelegate.swift */; };
 		97D3041923615DA600307413 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D3041823615DA600307413 /* SceneDelegate.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		4623728825FE2ADF009CB993 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		4625DB5326044379000110CC /* BadgeSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeSupplementaryView.swift; sourceTree = "<group>"; };
 		46971A1D25FF7BC80092CA65 /* TitleSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSupplementaryView.swift; sourceTree = "<group>"; };
 		97D3041323615DA600307413 /* RWLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RWLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97D3041623615DA600307413 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				97D304452361626100307413 /* ContentCell.swift */,
 				97D304472361628900307413 /* QueueCell.swift */,
 				46971A1D25FF7BC80092CA65 /* TitleSupplementaryView.swift */,
+				4625DB5326044379000110CC /* BadgeSupplementaryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4625DB5426044379000110CC /* BadgeSupplementaryView.swift in Sources */,
 				97D3043A236160C100307413 /* TutorialCollection.swift in Sources */,
 				97D304462361626100307413 /* ContentCell.swift in Sources */,
 				97D304422361623800307413 /* GradientView.swift in Sources */,

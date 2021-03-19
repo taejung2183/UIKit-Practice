@@ -50,6 +50,7 @@ struct TutorialCollection: Decodable, Hashable {
     }
 }
 
+// Filter all the queued tutorials for th queued tutorial scene.
 extension TutorialCollection {
     var queuedTutorials: [Tutorial] {
         return tutorials.filter({ $0.isQueued })
