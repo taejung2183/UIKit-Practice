@@ -54,13 +54,29 @@ class QueuedTutorialController: UIViewController {
     @IBOutlet var updateButton: UIBarButtonItem!
     @IBOutlet var applyUpdatesButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
-    
+
     // You have to define section & item type but, you don't have a meaningful section type here. In this case you can create an arbitrary one.
     var dataSource: UICollectionViewDiffableDataSource<Section, Tutorial>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+    }
+    
+    // This is just for ornamentation.
+    private var timer: Timer?
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { [weak self] _ in
+            guard let self = self else { return }
+            self.triggerUpdates()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) { [weak self] in
+                guard let self = self else { return }
+                self.applyUpdates()
+            }
+        })
     }
     
     private func setupView() {
