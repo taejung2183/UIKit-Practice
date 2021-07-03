@@ -38,12 +38,21 @@ public class WeatherViewModel{
   static private let defaultAddress = "Anchorage,AK"
   private let geocoder = LocationGeocoder()
 	let locationName = Box("Loading...")
-
 	let date = Box(" ")
+	let icon: Box<UIImage?> = Box(nil)
+	let summary = Box(" ")
+	let forecastSummary = Box(" ")
+
 	private let dateFormatter: DateFormatter = {
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "EEEE, MMM d"
 		return dateFormatter
+	}()
+
+	private let tempFormatter: NumberFormatter = {
+		let tempFormatter = NumberFormatter()
+		tempFormatter.numberStyle = .none
+		return tempFormatter
 	}()
 	
 	init() {
@@ -60,6 +69,13 @@ public class WeatherViewModel{
 				return
 			}
 		}
+		
+		// No weather data is shown if no location is returned from the geocode call.
+		self.locationName.value = "Not found"
+		self.date.value = ""
+		self.icon.value = nil
+		self.summary.value = ""
+		self.forecastSummary.value = ""
 	}
 	
 	private func fetchWeatherForLocation(_ location: Location) {
@@ -68,6 +84,12 @@ public class WeatherViewModel{
 						let weatherData = weatherData else { return }
 			// Update date whenever the weather data arrives.
 			self.date.value = self.dateFormatter.string(from: weatherData.date)
+			
+			// Let's change the values inside the Box objects.
+			self.icon.value = UIImage(named: weatherData.iconName)
+			let temp = self.tempFormatter.string(from: weatherData.currentTemp as NSNumber) ?? ""
+			self.summary.value = "\(weatherData.description) - \(temp)`f"
+			self.forecastSummary.value = "\nSummary: \(weatherData.description)"
 		}
 	}
 }
