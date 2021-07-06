@@ -101,7 +101,9 @@
 			children = (
 				460EF0D62692E8F000CCC52D /* AppDelegate.swift */,
 				460EF0D82692E8F000CCC52D /* SceneDelegate.swift */,
-				460EF0DA2692E8F000CCC52D /* ViewController.swift */,
+				460EF10B2692E93900CCC52D /* Controllers */,
+				460EF10A2692E92800CCC52D /* View */,
+				460EF1092692E91A00CCC52D /* Model */,
 				460EF0DC2692E8F000CCC52D /* Main.storyboard */,
 				460EF0DF2692E8F200CCC52D /* Assets.xcassets */,
 				460EF0E12692E8F200CCC52D /* LaunchScreen.storyboard */,
@@ -126,6 +128,28 @@
 				460EF0FA2692E8F200CCC52D /* Info.plist */,
 			);
 			path = FLOMusicPlayerUITests;
+			sourceTree = "<group>";
+		};
+		460EF1092692E91A00CCC52D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		460EF10A2692E92800CCC52D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		460EF10B2692E93900CCC52D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				460EF0DA2692E8F000CCC52D /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
