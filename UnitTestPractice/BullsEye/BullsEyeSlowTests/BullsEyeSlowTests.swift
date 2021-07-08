@@ -31,6 +31,9 @@ import XCTest
 
 class BullsEyeSlowTests: XCTestCase {
 	var sut: URLSession!
+	// NetworkMonitor wraps NWPathMonitor, providing a convenient way to check for a network connection.
+	let networkMonitor = NetworkMonitor.shared
+	
 	override func setUpWithError() throws {
 		// Put setup code here. This method is called before the invocation of each test method in the class.
 		try super.setUpWithError()
@@ -43,10 +46,16 @@ class BullsEyeSlowTests: XCTestCase {
 		try super.tearDownWithError()
 	}
 	
+	// This test waits until the timeout interval, if the test fails.
 	func testValidApiCallGetsHTTPStatusCode200() throws {
+		// Skip the test when no network is reachable.
+		try XCTSkipUnless(networkMonitor.isReachable, "Network connectivity needed for this test.")
+		
 		// given
 		let urlString = "http://www.randomnumberapi.com/api/v1.0/random?min=0&max=100&count=1"
 		let url = URL(string: urlString)!
+		// Fake url for failing test
+//		let url = URL(string: "http://www.randomnumberapi.com/test")!
 		// 1: expectation() Returns XCTestExpectation. description describes what you expect to happen.
 		let promise = expectation(description: "Status code: 200")
 		
@@ -70,6 +79,33 @@ class BullsEyeSlowTests: XCTestCase {
 		wait(for: [promise], timeout: 5)
 	}
 	
+	// This test waits no time when the test fails.
+	func testApiCallCompletes() throws {
+		// Skip the test when no network is reachable.
+		try XCTSkipUnless(networkMonitor.isReachable, "Network connectivity needed for this test.")
+		// given
+		let urlString = "http://www.randomnumberapi.com/api/v1.0/random?min=0&max=100&count=1"
+		let url = URL(string: urlString)!
+		let promise = expectation(description: "Completion handler invoked")
+		var statusCode: Int?
+		var responseError: Error?
+
+		// when
+		let dataTask = sut.dataTask(with: url) { _, response, error in
+			statusCode = (response as? HTTPURLResponse)?.statusCode
+			responseError = error
+			// Simply entering this completion handler fulfills the expectation, and it makes this test no longer waits for the extra seconds.
+			// But still, it'll fail at the then clause because the request failed.
+			promise.fulfill()
+		}
+		dataTask.resume()
+		wait(for: [promise], timeout: 5)
+
+		// then
+		XCTAssertNil(responseError)
+		XCTAssertEqual(statusCode, 200)
+	}
+
 	func testExample() throws {
 		// This is an example of a functional test case.
 		// Use XCTAssert and related functions to verify your tests produce the correct results.
