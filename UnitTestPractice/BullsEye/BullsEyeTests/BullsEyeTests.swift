@@ -72,16 +72,11 @@ class BullsEyeTests: XCTestCase {
 		XCTAssertEqual(sut.scoreRound, 95, "Score computed from guess is wrong")
 	}
 	
-	func testExample() throws {
-		// This is an example of a functional test case.
-		// Use XCTAssert and related functions to verify your tests produce the correct results.
-	}
-	
-	func testPerformanceExample() throws {
-		// This is an example of a performance test case.
-		measure {
-			// Put the code you want to measure the time of here.
+	// Performance test
+	// Performance test is simple: Just place the code you want to measure into the closure of measure(). You can specify multiple metrics to measure.
+	func testScoreIsComputedPerformance() {
+		measure(metrics: [XCTClockMetric(), XCTCPUMetric(), XCTStorageMetric(), XCTMemoryMetric()]) {
+			sut.check(guess: 100)
 		}
 	}
-	
 }
