@@ -48,7 +48,11 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		XCTAssertEqual(statusCode, 200)
 	}
 	
-	func testJSONParsing() {
-	
+	func testMockedURLSessionDataTask() {
+		let mockedSession = URLSessionMock()
+		let url = URL(string: "http://FakeURL.com")
+		
+		mockedSession.data = "fakeData".data(using: .ascii)
+		// Fake up downloading behavior with mocked data and URLSession
 	}
 }
