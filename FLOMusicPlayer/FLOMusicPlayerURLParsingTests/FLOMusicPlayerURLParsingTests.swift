@@ -49,10 +49,20 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 	}
 	
 	func testMockedURLSessionDataTask() {
+		// given
 		let mockedSession = URLSessionMock()
-		let url = URL(string: "http://FakeURL.com")
-		
 		mockedSession.data = "fakeData".data(using: .ascii)
-		// Fake up downloading behavior with mocked data and URLSession
+		let url = URL(string: "http://FakeURL.com")
+		let musicData = MusicData()
+		let exp = expectation(description: "Loading URL")
+		
+		// when you download data
+		musicData.downloadData(mockedSession, completionBlock: { data in
+			exp.fulfill()
+		})
+		waitForExpectations(timeout: 0.1)
+		
+		// then you should get the data
+		XCTAssertEqual(musicData.data, "fakeData".data(using: .ascii))
 	}
 }
