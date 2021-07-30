@@ -18,6 +18,7 @@
 		46926A2126B0F29700C0265F /* MusicData.json in Resources */ = {isa = PBXBuildFile; fileRef = 46926A2026B0F29700C0265F /* MusicData.json */; };
 		46926A3126B0F50000C0265F /* FLOMusicPlayerURLParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46926A3026B0F50000C0265F /* FLOMusicPlayerURLParsingTests.swift */; };
 		46926A4226B0F76E00C0265F /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46926A4126B0F76E00C0265F /* NetworkMonitor.swift */; };
+		46C63A5F26B3C2C400207E71 /* MockedURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C63A5E26B3C2C400207E71 /* MockedURLSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		46926A3026B0F50000C0265F /* FLOMusicPlayerURLParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLOMusicPlayerURLParsingTests.swift; sourceTree = "<group>"; };
 		46926A3226B0F50000C0265F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46926A4126B0F76E00C0265F /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		46C63A5E26B3C2C400207E71 /* MockedURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedURLSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				46926A4126B0F76E00C0265F /* NetworkMonitor.swift */,
+				46C63A5E26B3C2C400207E71 /* MockedURLSession.swift */,
 			);
 			path = "Supporting files";
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				46926A4226B0F76E00C0265F /* NetworkMonitor.swift in Sources */,
 				460EF0D72692E8F000CCC52D /* AppDelegate.swift in Sources */,
 				460EF0D92692E8F000CCC52D /* SceneDelegate.swift in Sources */,
+				46C63A5F26B3C2C400207E71 /* MockedURLSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
