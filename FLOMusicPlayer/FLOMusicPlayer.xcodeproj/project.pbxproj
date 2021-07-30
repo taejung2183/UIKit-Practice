@@ -19,6 +19,7 @@
 		46926A3126B0F50000C0265F /* FLOMusicPlayerURLParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46926A3026B0F50000C0265F /* FLOMusicPlayerURLParsingTests.swift */; };
 		46926A4226B0F76E00C0265F /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46926A4126B0F76E00C0265F /* NetworkMonitor.swift */; };
 		46C63A5F26B3C2C400207E71 /* MockedURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C63A5E26B3C2C400207E71 /* MockedURLSession.swift */; };
+		46C63A6526B4BE5300207E71 /* MusicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C63A6426B4BE5300207E71 /* MusicData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		46926A3226B0F50000C0265F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46926A4126B0F76E00C0265F /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		46C63A5E26B3C2C400207E71 /* MockedURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedURLSession.swift; sourceTree = "<group>"; };
+		46C63A6426B4BE5300207E71 /* MusicData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 		460EF1092692E91A00CCC52D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				46C63A6426B4BE5300207E71 /* MusicData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				460EF0DB2692E8F000CCC52D /* ViewController.swift in Sources */,
 				46926A4226B0F76E00C0265F /* NetworkMonitor.swift in Sources */,
 				460EF0D72692E8F000CCC52D /* AppDelegate.swift in Sources */,
+				46C63A6526B4BE5300207E71 /* MusicData.swift in Sources */,
 				460EF0D92692E8F000CCC52D /* SceneDelegate.swift in Sources */,
 				46C63A5F26B3C2C400207E71 /* MockedURLSession.swift in Sources */,
 			);
