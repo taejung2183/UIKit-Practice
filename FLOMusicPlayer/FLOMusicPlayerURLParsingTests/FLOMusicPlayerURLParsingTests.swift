@@ -48,21 +48,71 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		XCTAssertEqual(statusCode, 200)
 	}
 	
-	func testMockedURLSessionDataTask() {
-		// given
-		let mockedSession = URLSessionMock()
-		mockedSession.data = "fakeData".data(using: .ascii)
-		let url = URL(string: "http://FakeURL.com")
+//	func testMockedURLSessionDataTask() {
+//		// given
+//		let mockedSession = URLSessionMock()
+//		mockedSession.data = "fakeData".data(using: .ascii)
+//		let url = URL(string: "http://FakeURL.com")
+//		let musicData = MusicData()
+//		let exp = expectation(description: "Loading URL")
+//
+//		// when you download data
+//		musicData.downloadData(mockedSession, completionBlock: { data in
+//			exp.fulfill()
+//		})
+//		waitForExpectations(timeout: 0.1)
+//
+//		// then you should get the data
+//		XCTAssertEqual(musicData.data, "fakeData".data(using: .ascii))
+//	}
+	
+	func testGetMusicFunctionWithExpectedURLHostAndPath() {
+		// given that the instance of a MusicData has
+		// a mocked url session, and with the url.
 		let musicData = MusicData()
-		let exp = expectation(description: "Loading URL")
+		let mockedURLSession = URLSessionMock(data: nil,urlResponse: nil,error: nil)
+		musicData.session = mockedURLSession
+		let url = "http://catchmeifyoucan.testUrl.com/thispath/aswell"
+
+		// when you feed the url to the getMusic() function,
+		musicData.getMusic(from: url) { music, data in }
 		
-		// when you download data
-		musicData.downloadData(mockedSession, completionBlock: { data in
+		// then the mocked session in musicData instance
+		// should get the exact same url.
+		XCTAssertEqual(mockedURLSession.cachedUrl?.host, "catchmeifyoucan.testUrl.com")
+		XCTAssertEqual(mockedURLSession.cachedUrl?.path, "/thispath/aswell")
+	}
+	
+	func testGetCorrectMusicData() {
+		// given
+		
+		// Parse mocked jason data from bundle.
+		guard let path = Bundle.main.path(forResource: "MockedData", ofType: "json") else { return }
+		guard let jsonString = try? String(contentsOfFile: path) else { return }
+		let data = jsonString.data(using: .utf8)
+
+		// Feed the mocked jason data to the mocked URLSession.
+		let musicData = MusicData()
+		let mockedURLSession = URLSessionMock(data: data, urlResponse: nil, error: nil)
+		musicData.session = mockedURLSession
+		let url = "https://arbitraryURL.com/path"
+		let exp = expectation(description: "music")
+		var response: Music?
+
+		// when you call getMusic() fuction, you can retreive
+		// the music data that you've passed through the mocked url session.
+		musicData.getMusic(from: url) { music, error in
+			response = music
 			exp.fulfill()
-		})
-		waitForExpectations(timeout: 0.1)
-		
-		// then you should get the data
-		XCTAssertEqual(musicData.data, "fakeData".data(using: .ascii))
+		}
+
+		// then
+		waitForExpectations(timeout: 1) { error in
+			guard let response = response else { return }
+			XCTAssertEqual(response.singer, "Terry Reid");
+		}
 	}
 }
+	
+
+
