@@ -15,11 +15,12 @@
 		460EF0E32692E8F200CCC52D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 460EF0E12692E8F200CCC52D /* LaunchScreen.storyboard */; };
 		460EF0EE2692E8F200CCC52D /* FLOMusicPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF0ED2692E8F200CCC52D /* FLOMusicPlayerTests.swift */; };
 		460EF0F92692E8F200CCC52D /* FLOMusicPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF0F82692E8F200CCC52D /* FLOMusicPlayerUITests.swift */; };
-		46926A2126B0F29700C0265F /* MusicData.json in Resources */ = {isa = PBXBuildFile; fileRef = 46926A2026B0F29700C0265F /* MusicData.json */; };
+		46926A2126B0F29700C0265F /* MockedData.json in Resources */ = {isa = PBXBuildFile; fileRef = 46926A2026B0F29700C0265F /* MockedData.json */; };
 		46926A3126B0F50000C0265F /* FLOMusicPlayerURLParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46926A3026B0F50000C0265F /* FLOMusicPlayerURLParsingTests.swift */; };
 		46926A4226B0F76E00C0265F /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46926A4126B0F76E00C0265F /* NetworkMonitor.swift */; };
 		46C63A5F26B3C2C400207E71 /* MockedURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C63A5E26B3C2C400207E71 /* MockedURLSession.swift */; };
 		46C63A6526B4BE5300207E71 /* MusicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C63A6426B4BE5300207E71 /* MusicData.swift */; };
+		46C63A6A26BA5C0200207E71 /* MockedData.json in Resources */ = {isa = PBXBuildFile; fileRef = 46926A2026B0F29700C0265F /* MockedData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +62,7 @@
 		460EF0F42692E8F200CCC52D /* FLOMusicPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FLOMusicPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		460EF0F82692E8F200CCC52D /* FLOMusicPlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLOMusicPlayerUITests.swift; sourceTree = "<group>"; };
 		460EF0FA2692E8F200CCC52D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		46926A2026B0F29700C0265F /* MusicData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MusicData.json; sourceTree = "<group>"; };
+		46926A2026B0F29700C0265F /* MockedData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockedData.json; sourceTree = "<group>"; };
 		46926A2E26B0F50000C0265F /* FLOMusicPlayerURLParsingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FLOMusicPlayerURLParsingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46926A3026B0F50000C0265F /* FLOMusicPlayerURLParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLOMusicPlayerURLParsingTests.swift; sourceTree = "<group>"; };
 		46926A3226B0F50000C0265F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -187,7 +188,7 @@
 		46926A1F26B0F16A00C0265F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				46926A2026B0F29700C0265F /* MusicData.json */,
+				46926A2026B0F29700C0265F /* MockedData.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -344,7 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				460EF0E32692E8F200CCC52D /* LaunchScreen.storyboard in Resources */,
-				46926A2126B0F29700C0265F /* MusicData.json in Resources */,
+				46926A2126B0F29700C0265F /* MockedData.json in Resources */,
 				460EF0E02692E8F200CCC52D /* Assets.xcassets in Resources */,
 				460EF0DE2692E8F000CCC52D /* Main.storyboard in Resources */,
 			);
@@ -368,6 +369,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46C63A6A26BA5C0200207E71 /* MockedData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
