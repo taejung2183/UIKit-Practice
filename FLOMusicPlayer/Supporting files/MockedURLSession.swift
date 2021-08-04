@@ -8,37 +8,51 @@
 import Foundation
 
 protocol URLSessionProtocol {
-	func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol
+	func dataTask(
+		with url: URL,
+		completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void
+	) -> URLSessionDataTaskProtocol
 }
 //extension URLSession: URLSessionProtocol {}
 
 protocol URLSessionDataTaskProtocol {
 	func resume()
 }
-//extension URLSessionDataTask: URLSessionDataTaskProtocol {}
 
 class URLSessionDataTaskMock: URLSessionDataTaskProtocol {
-	private let closure: () -> Void
-	init(closure: @escaping () -> Void) {
-		self.closure = closure
+	private let data: Data?
+	private let urlResponse: URLResponse?
+	private let error: Error?
+	var completionHandler: ((Data?, URLResponse?, Error?) -> Void)?
+	
+	init(data: Data?, urlResponse: URLResponse?, error: Error?) {
+		self.data = data
+		self.urlResponse = urlResponse
+		self.error = error
 	}
+	
 	func resume() {
-		closure()
+		DispatchQueue.main.async {
+			self.completionHandler?(self.data, self.urlResponse, self.error)
+		}
 	}
 }
 
 class URLSessionMock: URLSessionProtocol {
-	typealias CompletionHandler = (Data?, URLResponse?, Error?) -> Void
-	var data: Data?
-	var error: Error?
+	var cachedUrl: URL?
+	private let mockedDataTask: URLSessionDataTaskMock
+	
+	init(data: Data?, urlResponse: URLResponse?, error: Error?) {
+		mockedDataTask = URLSessionDataTaskMock(data: data, urlResponse: urlResponse, error: error)
+	}
+	
 	func dataTask(
 		with url: URL,
-		completionHandler: @escaping CompletionHandler
+		completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void
 	) -> URLSessionDataTaskProtocol {
-		let data = self.data
-		let error = self.error
-		return URLSessionDataTaskMock {
-			completionHandler(data, nil, error)
-		}
+		self.cachedUrl = url
+		mockedDataTask.completionHandler = completionHandler
+
+		return mockedDataTask
 	}
 }
