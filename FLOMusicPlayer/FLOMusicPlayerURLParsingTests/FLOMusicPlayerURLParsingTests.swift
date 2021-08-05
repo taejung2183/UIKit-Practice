@@ -11,14 +11,17 @@ import XCTest
 class FLOMusicPlayerURLParsingTests: XCTestCase {
 	let networkMonitor = NetworkMonitor.shared
 	var sut: URLSession!
+	var musicData: MusicData!
 
 	override func setUpWithError() throws {
 		try super.setUpWithError()
-		sut  = URLSession(configuration: .default)
+		sut = URLSession(configuration: .default)
+		musicData = MusicData()
 	}
 	
 	override func tearDownWithError() throws {
 		sut = nil
+		musicData = nil
 		try super.tearDownWithError()
 	}
 	
@@ -69,7 +72,6 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 	func testGetMusicFunctionWithExpectedURLHostAndPath() {
 		// given that the instance of a MusicData has
 		// a mocked url session, and with the url.
-		let musicData = MusicData()
 		let mockedURLSession = URLSessionMock(data: nil,urlResponse: nil,error: nil)
 		musicData.session = mockedURLSession
 		let url = "http://catchmeifyoucan.testUrl.com/thispath/aswell"
@@ -92,7 +94,6 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		let data = jsonString.data(using: .utf8)
 
 		// Feed the mocked jason data to the mocked URLSession.
-		let musicData = MusicData()
 		let mockedURLSession = URLSessionMock(data: data, urlResponse: nil, error: nil)
 		musicData.session = mockedURLSession
 		let url = "https://arbitraryURL.com/path"
@@ -112,7 +113,67 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 			XCTAssertEqual(response.singer, "Terry Reid");
 		}
 	}
+	
+	func testGetErrorProperly() {
+		// given
+		let error = NSError(domain: "error", code: 1234, userInfo: nil)
+		let mockedURLSession = URLSessionMock(data: nil, urlResponse: nil, error: error)
+		musicData.session = mockedURLSession
+		let url = "https://arbitraryURL.com/path"
+		let exp = expectation(description: "error")
+		var errorResponse: Error?
+		
+		// when
+		musicData.getMusic(from: url) { music, error in
+			errorResponse = error
+			exp.fulfill()
+		}
+		
+		// then
+		waitForExpectations(timeout: 1) { error in
+			XCTAssertNotNil(errorResponse)
+		}
+	}
+	
+	func testEmptyDataReturnsError() {
+		// given
+		
+		// Create fake empty data
+		let jsonString = ""
+		let data = jsonString.data(using: .utf8)
+		
+		// Feed the empty data to the URLSessionMock
+		let mockedURLSession = URLSessionMock(data: data, urlResponse: nil, error: nil)
+		musicData.session = mockedURLSession
+		let url = "https://arbitraryURL.com/path"
+		let exp = expectation(description: "Error for empty data")
+		var emptyResponse: Error?
+		
+		// when
+		musicData.getMusic(from: url) { music, error in
+			emptyResponse = error
+			exp.fulfill()
+		}
+		
+		// then
+		waitForExpectations(timeout: 1) { error in
+			XCTAssertNotNil(emptyResponse)
+		}
+	}
 }
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
