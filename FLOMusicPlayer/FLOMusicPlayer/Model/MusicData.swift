@@ -24,6 +24,19 @@ class MusicData {
 		else { fatalError() }
 		
 		let dataTask = session.dataTask(with: url) { data, response, error in
+			guard error == nil else {
+				completion(nil, error)
+				return
+			}
+			
+			// empty is different from nil isn't it?
+			guard let isEmptyData = data?.isEmpty else { return }
+			if isEmptyData {
+				let error = NSError(domain: "Empty data", code: 1234, userInfo: nil)
+				completion(nil, error)
+				return
+			}
+
 			guard let data = data else { return }
 			let music = try! JSONDecoder().decode(Music.self, from: data)
 			completion(music, nil)
