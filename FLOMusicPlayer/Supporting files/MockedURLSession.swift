@@ -8,16 +8,20 @@
 import Foundation
 
 protocol URLSessionProtocol {
-	func dataTask(
+	func myDataTask(
 		with url: URL,
 		completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void
 	) -> URLSessionDataTaskProtocol
 }
-//extension URLSession: URLSessionProtocol {}
 
-protocol URLSessionDataTaskProtocol {
-	func resume()
+extension URLSession: URLSessionProtocol {
+	func myDataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
+		dataTask(with: url, completionHandler: completionHandler) as URLSessionDataTaskProtocol
+	}
 }
+
+protocol URLSessionDataTaskProtocol { func resume() }
+extension URLSessionDataTask: URLSessionDataTaskProtocol {}
 
 class URLSessionDataTaskMock: URLSessionDataTaskProtocol {
 	private let data: Data?
@@ -46,7 +50,7 @@ class URLSessionMock: URLSessionProtocol {
 		mockedDataTask = URLSessionDataTaskMock(data: data, urlResponse: urlResponse, error: error)
 	}
 	
-	func dataTask(
+	func myDataTask(
 		with url: URL,
 		completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void
 	) -> URLSessionDataTaskProtocol {
