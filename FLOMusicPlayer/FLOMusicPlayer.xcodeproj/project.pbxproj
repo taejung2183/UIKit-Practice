@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		460EF0D72692E8F000CCC52D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF0D62692E8F000CCC52D /* AppDelegate.swift */; };
 		460EF0D92692E8F000CCC52D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF0D82692E8F000CCC52D /* SceneDelegate.swift */; };
-		460EF0DB2692E8F000CCC52D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF0DA2692E8F000CCC52D /* ViewController.swift */; };
-		460EF0DE2692E8F000CCC52D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 460EF0DC2692E8F000CCC52D /* Main.storyboard */; };
+		460EF0DB2692E8F000CCC52D /* PlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF0DA2692E8F000CCC52D /* PlayListViewController.swift */; };
 		460EF0E02692E8F200CCC52D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 460EF0DF2692E8F200CCC52D /* Assets.xcassets */; };
 		460EF0E32692E8F200CCC52D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 460EF0E12692E8F200CCC52D /* LaunchScreen.storyboard */; };
 		460EF0EE2692E8F200CCC52D /* FLOMusicPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF0ED2692E8F200CCC52D /* FLOMusicPlayerTests.swift */; };
@@ -18,8 +17,9 @@
 		46926A2126B0F29700C0265F /* MockedData.json in Resources */ = {isa = PBXBuildFile; fileRef = 46926A2026B0F29700C0265F /* MockedData.json */; };
 		46926A3126B0F50000C0265F /* FLOMusicPlayerURLParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46926A3026B0F50000C0265F /* FLOMusicPlayerURLParsingTests.swift */; };
 		46926A4226B0F76E00C0265F /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46926A4126B0F76E00C0265F /* NetworkMonitor.swift */; };
+		469826C626C0E8480037B52C /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469826C526C0E8480037B52C /* Music.swift */; };
 		46C63A5F26B3C2C400207E71 /* MockedURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C63A5E26B3C2C400207E71 /* MockedURLSession.swift */; };
-		46C63A6526B4BE5300207E71 /* MusicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C63A6426B4BE5300207E71 /* MusicData.swift */; };
+		46C63A6526B4BE5300207E71 /* WebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C63A6426B4BE5300207E71 /* WebServices.swift */; };
 		46C63A6A26BA5C0200207E71 /* MockedData.json in Resources */ = {isa = PBXBuildFile; fileRef = 46926A2026B0F29700C0265F /* MockedData.json */; };
 /* End PBXBuildFile section */
 
@@ -51,8 +51,7 @@
 		460EF0D32692E8F000CCC52D /* FLOMusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FLOMusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		460EF0D62692E8F000CCC52D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		460EF0D82692E8F000CCC52D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		460EF0DA2692E8F000CCC52D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		460EF0DD2692E8F000CCC52D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		460EF0DA2692E8F000CCC52D /* PlayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListViewController.swift; sourceTree = "<group>"; };
 		460EF0DF2692E8F200CCC52D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		460EF0E22692E8F200CCC52D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		460EF0E42692E8F200CCC52D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,8 +66,9 @@
 		46926A3026B0F50000C0265F /* FLOMusicPlayerURLParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLOMusicPlayerURLParsingTests.swift; sourceTree = "<group>"; };
 		46926A3226B0F50000C0265F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46926A4126B0F76E00C0265F /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		469826C526C0E8480037B52C /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		46C63A5E26B3C2C400207E71 /* MockedURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedURLSession.swift; sourceTree = "<group>"; };
-		46C63A6426B4BE5300207E71 /* MusicData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicData.swift; sourceTree = "<group>"; };
+		46C63A6426B4BE5300207E71 /* WebServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +136,6 @@
 				460EF10B2692E93900CCC52D /* Controllers */,
 				460EF10A2692E92800CCC52D /* View */,
 				460EF1092692E91A00CCC52D /* Model */,
-				460EF0DC2692E8F000CCC52D /* Main.storyboard */,
 				460EF0DF2692E8F200CCC52D /* Assets.xcassets */,
 				460EF0E12692E8F200CCC52D /* LaunchScreen.storyboard */,
 				460EF0E42692E8F200CCC52D /* Info.plist */,
@@ -165,7 +164,8 @@
 		460EF1092692E91A00CCC52D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				46C63A6426B4BE5300207E71 /* MusicData.swift */,
+				46C63A6426B4BE5300207E71 /* WebServices.swift */,
+				469826C526C0E8480037B52C /* Music.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -180,7 +180,7 @@
 		460EF10B2692E93900CCC52D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				460EF0DA2692E8F000CCC52D /* ViewController.swift */,
+				460EF0DA2692E8F000CCC52D /* PlayListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -347,7 +347,6 @@
 				460EF0E32692E8F200CCC52D /* LaunchScreen.storyboard in Resources */,
 				46926A2126B0F29700C0265F /* MockedData.json in Resources */,
 				460EF0E02692E8F200CCC52D /* Assets.xcassets in Resources */,
-				460EF0DE2692E8F000CCC52D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,10 +379,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				460EF0DB2692E8F000CCC52D /* ViewController.swift in Sources */,
+				460EF0DB2692E8F000CCC52D /* PlayListViewController.swift in Sources */,
 				46926A4226B0F76E00C0265F /* NetworkMonitor.swift in Sources */,
 				460EF0D72692E8F000CCC52D /* AppDelegate.swift in Sources */,
-				46C63A6526B4BE5300207E71 /* MusicData.swift in Sources */,
+				46C63A6526B4BE5300207E71 /* WebServices.swift in Sources */,
+				469826C626C0E8480037B52C /* Music.swift in Sources */,
 				460EF0D92692E8F000CCC52D /* SceneDelegate.swift in Sources */,
 				46C63A5F26B3C2C400207E71 /* MockedURLSession.swift in Sources */,
 			);
@@ -434,14 +434,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		460EF0DC2692E8F000CCC52D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				460EF0DD2692E8F000CCC52D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		460EF0E12692E8F200CCC52D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
