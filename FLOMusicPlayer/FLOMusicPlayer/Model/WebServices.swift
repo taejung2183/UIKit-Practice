@@ -7,17 +7,7 @@
 
 import Foundation
 
-struct Music: Codable {
-	let singer: String
-	let album: String
-	let title: String
-	let duration: Int
-	let image: String
-	let file: String
-	let lyrics: String
-}
-
-class MusicData<T: URLSessionProtocol> {
+class WebServices<T: URLSessionProtocol> {
 	var session: T?
 	func getMusic(from urlStr: String, completion: @escaping (Music?, Error?) -> Void) {
 		guard let url = URL(string: urlStr)
@@ -25,6 +15,13 @@ class MusicData<T: URLSessionProtocol> {
 		
 		guard let session = session else { return }
 		let dataTask = session.myDataTask(with: url) { data, response, error in
+			// Return for invalid status
+			let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 200
+			if statusCode != 200 {
+				completion(nil, NSError(domain: "Invalid response", code: 30, userInfo: nil))
+				return
+			}
+			
 			guard error == nil else {
 				completion(nil, error)
 				return
@@ -38,7 +35,7 @@ class MusicData<T: URLSessionProtocol> {
 			
 			// Empty data
 			if data.isEmpty {
-				completion(nil, NSError(domain: "Empty data", code: 10, userInfo: nil))
+				completion(nil, NSError(domain: "Empty data", code: 20, userInfo: nil))
 				return
 			}
 

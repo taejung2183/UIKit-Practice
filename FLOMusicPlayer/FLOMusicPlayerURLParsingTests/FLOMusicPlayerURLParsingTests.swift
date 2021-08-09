@@ -11,17 +11,17 @@ import XCTest
 class FLOMusicPlayerURLParsingTests: XCTestCase {
 	let networkMonitor = NetworkMonitor.shared
 	var sut: URLSession!
-	var musicData: MusicData<URLSessionMock>!
+	var webService: WebServices<URLSessionMock>!
 
 	override func setUpWithError() throws {
 		try super.setUpWithError()
 		sut = URLSession(configuration: .default)
-		musicData = MusicData()
+		webService = WebServices()
 	}
 	
 	override func tearDownWithError() throws {
 		sut = nil
-		musicData = nil
+		webService = nil
 		try super.tearDownWithError()
 	}
 	
@@ -55,13 +55,13 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		// given that the instance of a MusicData has
 		// a mocked url session, and with the url.
 		let mockedURLSession = URLSessionMock(data: nil,urlResponse: nil,error: nil)
-		musicData.session = mockedURLSession
+		webService.session = mockedURLSession
 		let url = "http://catchmeifyoucan.testUrl.com/thispath/aswell"
 
 		// when you feed the url to the getMusic() function,
-		musicData.getMusic(from: url) { music, data in }
+		webService.getMusic(from: url) { music, data in }
 		
-		// then the mocked session in musicData instance
+		// then the mocked session in webService instance
 		// should get the exact same url.
 		XCTAssertEqual(mockedURLSession.cachedUrl?.host, "catchmeifyoucan.testUrl.com")
 		XCTAssertEqual(mockedURLSession.cachedUrl?.path, "/thispath/aswell")
@@ -77,14 +77,14 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 
 		// Feed the mocked jason data to the mocked URLSession.
 		let mockedURLSession = URLSessionMock(data: data, urlResponse: nil, error: nil)
-		musicData.session = mockedURLSession
+		webService.session = mockedURLSession
 		let url = "https://arbitraryURL.com/path"
 		let exp = expectation(description: "music")
 		var response: Music?
 
 		// when you call getMusic() fuction, you can retreive
 		// the music data that you've passed through the mocked url session.
-		musicData.getMusic(from: url) { music, error in
+		webService.getMusic(from: url) { music, error in
 			response = music
 			exp.fulfill()
 		}
@@ -100,13 +100,13 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		// given
 		let error = NSError(domain: "error", code: 1234, userInfo: nil)
 		let mockedURLSession = URLSessionMock(data: nil, urlResponse: nil, error: error)
-		musicData.session = mockedURLSession
+		webService.session = mockedURLSession
 		let url = "https://arbitraryURL.com/path"
 		let exp = expectation(description: "error")
 		var errorResponse: Error?
 		
 		// when
-		musicData.getMusic(from: url) { music, error in
+		webService.getMusic(from: url) { music, error in
 			errorResponse = error
 			exp.fulfill()
 		}
@@ -126,13 +126,13 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		
 		// Feed the empty data to the URLSessionMock
 		let mockedURLSession = URLSessionMock(data: data, urlResponse: nil, error: nil)
-		musicData.session = mockedURLSession
+		webService.session = mockedURLSession
 		let url = "https://arbitraryURL.com/path"
 		let exp = expectation(description: "Error for empty data")
 		var emptyResponse: Error?
 		
 		// when
-		musicData.getMusic(from: url) { music, error in
+		webService.getMusic(from: url) { music, error in
 			emptyResponse = error
 			exp.fulfill()
 		}
@@ -151,13 +151,13 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		let data = jsonString.data(using: .utf8)
 		
 		let mockedURLSession = URLSessionMock(data: data, urlResponse: nil, error: nil)
-		musicData.session = mockedURLSession
+		webService.session = mockedURLSession
 		let url = "https://arbitraryURL.com/path"
 		let exp = expectation(description: "Error for invalid json data")
 		var invalidJsonResponse: Error?
 
 		// when
-		musicData.getMusic(from: url) { music, error in
+		webService.getMusic(from: url) { music, error in
 			invalidJsonResponse = error
 			exp.fulfill()
 		}
