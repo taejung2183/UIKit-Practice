@@ -11,7 +11,7 @@ import XCTest
 class FLOMusicPlayerURLParsingTests: XCTestCase {
 	let networkMonitor = NetworkMonitor.shared
 	var sut: URLSession!
-	var musicData: MusicData!
+	var musicData: MusicData<URLSessionMock>!
 
 	override func setUpWithError() throws {
 		try super.setUpWithError()
@@ -50,24 +50,6 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		XCTAssertNil(responseError)
 		XCTAssertEqual(statusCode, 200)
 	}
-	
-//	func testMockedURLSessionDataTask() {
-//		// given
-//		let mockedSession = URLSessionMock()
-//		mockedSession.data = "fakeData".data(using: .ascii)
-//		let url = URL(string: "http://FakeURL.com")
-//		let musicData = MusicData()
-//		let exp = expectation(description: "Loading URL")
-//
-//		// when you download data
-//		musicData.downloadData(mockedSession, completionBlock: { data in
-//			exp.fulfill()
-//		})
-//		waitForExpectations(timeout: 0.1)
-//
-//		// then you should get the data
-//		XCTAssertEqual(musicData.data, "fakeData".data(using: .ascii))
-//	}
 	
 	func testGetMusicFunctionWithExpectedURLHostAndPath() {
 		// given that the instance of a MusicData has
@@ -160,8 +142,34 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 			XCTAssertNotNil(emptyResponse)
 		}
 	}
-}
 	
+	func testInvalidJsonDataReturnsError() {
+		// given
+		
+		// Create invalid json data
+		let jsonString = "INVALID"
+		let data = jsonString.data(using: .utf8)
+		
+		let mockedURLSession = URLSessionMock(data: data, urlResponse: nil, error: nil)
+		musicData.session = mockedURLSession
+		let url = "https://arbitraryURL.com/path"
+		let exp = expectation(description: "Error for invalid json data")
+		var invalidJsonResponse: Error?
+
+		// when
+		musicData.getMusic(from: url) { music, error in
+			invalidJsonResponse = error
+			exp.fulfill()
+		}
+
+		// then
+		waitForExpectations(timeout: 1) { error in
+			XCTAssertNotNil(invalidJsonResponse)
+		}
+	}
+	
+}
+
 
 
 
