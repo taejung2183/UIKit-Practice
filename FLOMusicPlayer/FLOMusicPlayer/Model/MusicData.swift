@@ -17,32 +17,40 @@ struct Music: Codable {
 	let lyrics: String
 }
 
-class MusicData {
-	var session: URLSessionProtocol!
+class MusicData<T: URLSessionProtocol> {
+	var session: T?
 	func getMusic(from urlStr: String, completion: @escaping (Music?, Error?) -> Void) {
 		guard let url = URL(string: urlStr)
 		else { fatalError() }
 		
-		let dataTask = session.dataTask(with: url) { data, response, error in
+		guard let session = session else { return }
+		let dataTask = session.myDataTask(with: url) { data, response, error in
 			guard error == nil else {
 				completion(nil, error)
 				return
 			}
 			
-			// empty is different from nil isn't it?
-			guard let isEmptyData = data?.isEmpty else { return }
-			if isEmptyData {
-				let error = NSError(domain: "Empty data", code: 1234, userInfo: nil)
-				completion(nil, error)
+			// Return with error for nil data
+			guard let data = data else {
+				completion(nil, NSError(domain: "Empty data", code: 10, userInfo: nil))
+				return
+			}
+			
+			// Empty data
+			if data.isEmpty {
+				completion(nil, NSError(domain: "Empty data", code: 10, userInfo: nil))
 				return
 			}
 
-			guard let data = data else { return }
-			let music = try! JSONDecoder().decode(Music.self, from: data)
-			completion(music, nil)
+			// Check if data is valid json data
+			do {
+				let music = try JSONDecoder().decode(Music.self, from: data)
+				completion(music, nil)
+			} catch {
+				completion(nil, error)
+			}
 		}
 		dataTask.resume()
 	}
 }
-
 
