@@ -7,13 +7,22 @@
 
 import Foundation
 
-class WebServices<T: URLSessionProtocol> {
-	var session: T?
+class WebServices {
+
+	public var session: URLSessionProtocol
+
+	init(through session: URLSessionProtocol) {
+		self.session = session
+	}
+
+//	init(session: URLSessionProtocol = URLSession.shared) {
+//		self.session = session
+//	}
+
 	func getMusic(from urlStr: String, completion: @escaping (Music?, Error?) -> Void) {
-		guard let url = URL(string: urlStr)
-		else { fatalError() }
 		
-		guard let session = session else { return }
+		guard let url = URL(string: urlStr) else { fatalError() }
+		
 		let dataTask = session.myDataTask(with: url) { data, response, error in
 			// Return for invalid status
 			let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 200
@@ -21,7 +30,6 @@ class WebServices<T: URLSessionProtocol> {
 				completion(nil, NSError(domain: "Invalid response", code: 30, userInfo: nil))
 				return
 			}
-			
 			guard error == nil else {
 				completion(nil, error)
 				return
@@ -32,7 +40,7 @@ class WebServices<T: URLSessionProtocol> {
 				completion(nil, NSError(domain: "Empty data", code: 10, userInfo: nil))
 				return
 			}
-			
+
 			// Empty data
 			if data.isEmpty {
 				completion(nil, NSError(domain: "Empty data", code: 20, userInfo: nil))
