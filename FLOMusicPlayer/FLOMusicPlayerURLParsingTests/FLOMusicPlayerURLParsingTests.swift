@@ -11,16 +11,19 @@ import XCTest
 class FLOMusicPlayerURLParsingTests: XCTestCase {
 	let networkMonitor = NetworkMonitor.shared
 	var sut: URLSession!
-	var webService: WebServices<URLSessionMock>!
+	var mockedSession: URLSessionMock!
+	var webService: WebServices!
 
 	override func setUpWithError() throws {
 		try super.setUpWithError()
 		sut = URLSession(configuration: .default)
-		webService = WebServices()
+		mockedSession = URLSessionMock(data: nil, urlResponse: nil, error: nil)
+		webService = WebServices(through: mockedSession)
 	}
 	
 	override func tearDownWithError() throws {
 		sut = nil
+		mockedSession = nil
 		webService = nil
 		try super.tearDownWithError()
 	}
