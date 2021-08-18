@@ -15,7 +15,7 @@ class WebServices {
 		self.session = session
 	}
 
-	func downloadData<T: Decodable>(from urlStr: String, completion: @escaping (T?, Error?) -> Void) {
+	func downloadData(from urlStr: String, completion: @escaping (Data?, Error?) -> Void) {
 		
 		guard let url = URL(string: urlStr) else { fatalError() }
 		
@@ -43,13 +43,8 @@ class WebServices {
 				return
 			}
 			
-			// Check if data is valid json data
-			do {
-				let specificData = try JSONDecoder().decode(T.self, from: data)
-				completion(specificData, nil)
-			} catch {
-				completion(nil, error)
-			}
+			// Data is valid.
+			completion(data, nil)
 		}
 		dataTask.resume()
 	}

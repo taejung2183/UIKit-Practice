@@ -10,6 +10,7 @@ import UIKit
 class PlayListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	let tableView = UITableView()
 	
+	var data: Data?
 	var music: Music?
 	var albumImage: UIImage?
 
@@ -29,11 +30,21 @@ class PlayListViewController: UIViewController, UITableViewDelegate, UITableView
 		let service = WebServices(through: session)
 		let url = "https://grepp-programmers-challenges.s3.ap-northeast-2.amazonaws.com/2020-flo/song.json"
 
-		service.downloadData(from: url) { (music: Music?, error) in
-			if error == nil { self.music = music }
+		service.downloadData(from: url) { data, error in
+			if error == nil { self.data = data }
 		}
 		
-		// Get image through url that you've got it form music data.
+		guard let data = data else { return }
+		
+		// Parse the json data.
+		do {
+			let music = try JSONDecoder().decode(Music.self, from: data)
+			self.music = music
+		} catch {
+			fatalError()
+		}
+		
+		// Get image data
 //		if let music = music {
 //			let url = music.image
 //

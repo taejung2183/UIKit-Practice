@@ -62,7 +62,7 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		let url = "http://catchmeifyoucan.testUrl.com/thispath/aswell"
 
 		// when you feed the url to the downloadData() function,
-		webService.downloadData(from:url) { (music: Music?, error) in }
+		webService.downloadData(from:url) { data, error in }
 		
 		// then the mocked session in webService instance
 		// should get the exact same url.
@@ -87,8 +87,18 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 
 		// when you call downloadData() fuction, you can retreive
 		// the music data that you've passed through the mocked url session.
-		webService.downloadData(from: url) { (music: Music?, error) in
-			response = music
+		webService.downloadData(from: url) { data, error in
+			if let data = data {
+				let music: Music
+				
+				do {
+					music = try JSONDecoder().decode(Music.self, from: data)
+				} catch {
+					fatalError()
+				}
+				
+				response = music
+			}
 			exp.fulfill()
 		}
 
@@ -109,7 +119,7 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		var errorResponse: Error?
 		
 		// when
-		webService.downloadData(from: url) { (music: Music?, error) in
+		webService.downloadData(from: url) { data, error in
 			errorResponse = error
 			exp.fulfill()
 		}
@@ -135,7 +145,7 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		var emptyResponse: Error?
 		
 		// when
-		webService.downloadData(from: url) { (music: Music?, error) in
+		webService.downloadData(from: url) { data, error in
 			emptyResponse = error
 			exp.fulfill()
 		}
@@ -146,30 +156,30 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		}
 	}
 	
-	func testInvalidJsonDataReturnsError() {
-		// given
-		
-		// Create invalid json data
-		let jsonString = "INVALID"
-		let data = jsonString.data(using: .utf8)
-		
-		let mockedURLSession = URLSessionMock(data: data, urlResponse: nil, error: nil)
-		webService.session = mockedURLSession
-		let url = "https://arbitraryURL.com/path"
-		let exp = expectation(description: "Error for invalid json data")
-		var invalidJsonResponse: Error?
-
-		// when
-		webService.downloadData(from: url) { (music: Music?, error) in
-			invalidJsonResponse = error
-			exp.fulfill()
-		}
-
-		// then
-		waitForExpectations(timeout: 1) { error in
-			XCTAssertNotNil(invalidJsonResponse)
-		}
-	}
+//	func testInvalidJsonDataReturnsError() {
+//		// given
+//
+//		// Create invalid json data
+//		let jsonString = "INVALID"
+//		let data = jsonString.data(using: .utf8)
+//
+//		let mockedURLSession = URLSessionMock(data: data, urlResponse: nil, error: nil)
+//		webService.session = mockedURLSession
+//		let url = "https://arbitraryURL.com/path"
+//		let exp = expectation(description: "Error for invalid json data")
+//		var invalidJsonResponse: Error?
+//
+//		// when
+//		webService.downloadData(from: url) { data, error in
+//			invalidJsonResponse = error
+//			exp.fulfill()
+//		}
+//
+//		// then
+//		waitForExpectations(timeout: 1) { error in
+//			XCTAssertNotNil(invalidJsonResponse)
+//		}
+//	}
 	
 }
 
