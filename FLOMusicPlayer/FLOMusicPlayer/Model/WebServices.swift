@@ -19,6 +19,10 @@ class WebServices {
 //		self.session = session
 //	}
 
+	func testFunc() {
+		// This is for testing git branch.
+	}
+	
 	// Refactor this as a generic function.
 	func getMusic(from urlStr: String, completion: @escaping (Music?, Error?) -> Void) {
 		
