@@ -31,27 +31,27 @@ class PlayListViewController: UIViewController, UITableViewDelegate, UITableView
 		let url = "https://grepp-programmers-challenges.s3.ap-northeast-2.amazonaws.com/2020-flo/song.json"
 
 		service.downloadData(from: url) { data, error in
-			if error == nil { self.data = data }
+			
+			if error == nil, let data = data {
+				
+				// Get music data.
+				do {
+					let music = try JSONDecoder().decode(Music.self, from: data)
+					self.music = music
+					
+					// Get image data with url in music data.
+					let imageUrl = music.image
+					
+					service.downloadData(from: imageUrl) { data, error in
+						if error == nil, let data = data {
+							self.albumImage = UIImage(data: data)
+						}
+					}
+				} catch {
+					fatalError()
+				}
+			}
 		}
-		
-		guard let data = data else { return }
-		
-		// Parse the json data.
-		do {
-			let music = try JSONDecoder().decode(Music.self, from: data)
-			self.music = music
-		} catch {
-			fatalError()
-		}
-		
-		// Get image data
-//		if let music = music {
-//			let url = music.image
-//
-//			service.downloadData(from: url) { (image: UIImage?, error) in
-//
-//			}
-//		}
 	}
 
 	func setUpTableView() {
@@ -81,13 +81,15 @@ class PlayListViewController: UIViewController, UITableViewDelegate, UITableView
 		
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: MusicCell.identifier, for: indexPath) as? MusicCell else { return UITableViewCell() }
 		
-		guard let data = music else {
+		guard let music = music else {
 			print("Empty cell")
-			cell.configureCell(imageName: "placeholder", title: "nil", artist: "nil")
+			cell.configureCell(image: UIImage(named: "placeholder")!, title: "nil", artist: "nil")
 			return cell
 		}
 		
-		cell.configureCell(imageName: "placeholder", title: data.title, artist: data.singer)
+		if let albumImage = albumImage {
+			cell.configureCell(image: albumImage, title: music.title, artist: music.singer)
+		}
 		
 		return cell
 	}

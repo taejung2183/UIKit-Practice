@@ -22,8 +22,8 @@ class MusicCell: UITableViewCell {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	public func configureCell(imageName: String, title: String, artist: String) {
-		albumImage.image = UIImage(named: imageName)
+	public func configureCell(image: UIImage, title: String, artist: String) {
+		albumImage.image = image
 		titleLabel.text = title
 		artistLabel.text = artist
 	}
