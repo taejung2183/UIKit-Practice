@@ -15,12 +15,7 @@ class WebServices {
 		self.session = session
 	}
 
-//	init(session: URLSessionProtocol = URLSession.shared) {
-//		self.session = session
-//	}
-
-	// Refactor this as a generic function.
-	func getMusic(from urlStr: String, completion: @escaping (Music?, Error?) -> Void) {
+	func downloadData<T: Decodable>(from urlStr: String, completion: @escaping (T?, Error?) -> Void) {
 		
 		guard let url = URL(string: urlStr) else { fatalError() }
 		
@@ -41,17 +36,17 @@ class WebServices {
 				completion(nil, NSError(domain: "Empty data", code: 10, userInfo: nil))
 				return
 			}
-
+			
 			// Empty data
 			if data.isEmpty {
 				completion(nil, NSError(domain: "Empty data", code: 20, userInfo: nil))
 				return
 			}
-
+			
 			// Check if data is valid json data
 			do {
-				let music = try JSONDecoder().decode(Music.self, from: data)
-				completion(music, nil)
+				let specificData = try JSONDecoder().decode(T.self, from: data)
+				completion(specificData, nil)
 			} catch {
 				completion(nil, error)
 			}
@@ -59,4 +54,3 @@ class WebServices {
 		dataTask.resume()
 	}
 }
-

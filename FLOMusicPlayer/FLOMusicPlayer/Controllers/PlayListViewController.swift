@@ -28,8 +28,8 @@ class PlayListViewController: UIViewController, UITableViewDelegate, UITableView
 		let session = URLSession(configuration: .default)
 		let service = WebServices(through: session)
 		let url = "https://grepp-programmers-challenges.s3.ap-northeast-2.amazonaws.com/2020-flo/song.json"
-		
-		service.getMusic(from: url) { music, error in
+
+		service.downloadData(from: url) { (music: Music?, error) in
 			if error == nil {
 				self.music = music
 			}
