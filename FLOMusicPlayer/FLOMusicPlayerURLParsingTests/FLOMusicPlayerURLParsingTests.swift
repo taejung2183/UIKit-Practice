@@ -61,8 +61,8 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		webService.session = mockedURLSession
 		let url = "http://catchmeifyoucan.testUrl.com/thispath/aswell"
 
-		// when you feed the url to the getMusic() function,
-		webService.getMusic(from: url) { music, data in }
+		// when you feed the url to the downloadData() function,
+		webService.downloadData(from:url) { (music: Music?, error) in }
 		
 		// then the mocked session in webService instance
 		// should get the exact same url.
@@ -85,9 +85,9 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		let exp = expectation(description: "music")
 		var response: Music?
 
-		// when you call getMusic() fuction, you can retreive
+		// when you call downloadData() fuction, you can retreive
 		// the music data that you've passed through the mocked url session.
-		webService.getMusic(from: url) { music, error in
+		webService.downloadData(from: url) { (music: Music?, error) in
 			response = music
 			exp.fulfill()
 		}
@@ -109,7 +109,7 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		var errorResponse: Error?
 		
 		// when
-		webService.getMusic(from: url) { music, error in
+		webService.downloadData(from: url) { (music: Music?, error) in
 			errorResponse = error
 			exp.fulfill()
 		}
@@ -135,7 +135,7 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		var emptyResponse: Error?
 		
 		// when
-		webService.getMusic(from: url) { music, error in
+		webService.downloadData(from: url) { (music: Music?, error) in
 			emptyResponse = error
 			exp.fulfill()
 		}
@@ -160,7 +160,7 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		var invalidJsonResponse: Error?
 
 		// when
-		webService.getMusic(from: url) { music, error in
+		webService.downloadData(from: url) { (music: Music?, error) in
 			invalidJsonResponse = error
 			exp.fulfill()
 		}
