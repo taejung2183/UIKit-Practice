@@ -1,4 +1,8 @@
 # Ignore xcode user state file
 *.xcuserstate
 
-xcuserdata
+xcuserdata/
+
+*.xcodeproj
+
+**/.DS_Store
