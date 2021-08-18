@@ -19,6 +19,7 @@ class WebServices {
 //		self.session = session
 //	}
 
+	// Refactor this as a generic function.
 	func getMusic(from urlStr: String, completion: @escaping (Music?, Error?) -> Void) {
 		
 		guard let url = URL(string: urlStr) else { fatalError() }
