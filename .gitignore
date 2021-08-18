@@ -1,2 +1,4 @@
 # Ignore xcode user state file
 *.xcuserstate
+
+xcuserdata
