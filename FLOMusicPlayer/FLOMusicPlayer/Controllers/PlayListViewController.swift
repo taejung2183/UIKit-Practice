@@ -10,7 +10,6 @@ import UIKit
 class PlayListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	let tableView = UITableView()
 	
-	var data: Data?
 	var music: Music?
 	var albumImage: UIImage?
 
@@ -32,24 +31,25 @@ class PlayListViewController: UIViewController, UITableViewDelegate, UITableView
 
 		service.downloadData(from: url) { data, error in
 			
-			if error == nil, let data = data {
+			guard error == nil, let musicData = data else { return }
+			
+			// Get music data
+			do {
+				let music = try JSONDecoder().decode(Music.self, from: musicData)
+				self.music = music
+			} catch {
+				fatalError()
+			}
+			
+			guard let music = self.music else { return }
+
+			// Get image data from url in music data
+			let imageUrl = music.image
+			service.downloadData(from: imageUrl) { data, error in
 				
-				// Get music data.
-				do {
-					let music = try JSONDecoder().decode(Music.self, from: data)
-					self.music = music
-					
-					// Get image data with url in music data.
-					let imageUrl = music.image
-					
-					service.downloadData(from: imageUrl) { data, error in
-						if error == nil, let data = data {
-							self.albumImage = UIImage(data: data)
-						}
-					}
-				} catch {
-					fatalError()
-				}
+				guard error == nil, let data = data else { return }
+				
+				self.albumImage = UIImage(data: data)
 			}
 		}
 	}
