@@ -82,16 +82,16 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		webService.session = mockedURLSession
 		let url = "https://arbitraryURL.com/path"
 		let exp = expectation(description: "music")
-		var response: [Music]?
+		var response: Music?
 
 		// WHEN you call downloadData() fuction, you can retreive
 		// the music data that you've passed through the mocked url session.
 		webService.downloadData(from: url) { data, error in
 			if let data = data {
-				let music: [Music]
+				let music: Music
 				
 				do {
-					music = try JSONDecoder().decode([Music].self, from: data)
+					music = try JSONDecoder().decode(Music.self, from: data)
 				} catch {
 					fatalError("ERROR INFO : \(error)")
 				}
@@ -104,7 +104,7 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		// THEN
 		waitForExpectations(timeout: 1) { error in
 			guard let response = response else { return }
-			XCTAssertEqual(response.first?.singer, "Led Zepplin");
+			XCTAssertEqual(response.singer, "Terry Reid");
 		}
 	}
 	
