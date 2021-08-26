@@ -54,9 +54,8 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		XCTAssertEqual(statusCode, 200)
 	}
 	
-	func testGetMusicFunctionWithExpectedURLHostAndPath() {
-		// given that the instance of a MusicData has
-		// a mocked url session, and with the url.
+	func testDownloadFunctionGetsURLProperly() {
+		// given
 		let mockedURLSession = URLSessionMock(data: nil,urlResponse: nil,error: nil)
 		webService.session = mockedURLSession
 		let url = "http://catchmeifyoucan.testUrl.com/thispath/aswell"
@@ -70,8 +69,8 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		XCTAssertEqual(mockedURLSession.cachedUrl?.path, "/thispath/aswell")
 	}
 	
-	func testGetCorrectMusicData() {
-		// given
+	func testDownloadFunctionBringsCorrectData() {
+		// GIVEN
 		
 		// Parse mocked jason data from bundle.
 		guard let path = Bundle.main.path(forResource: "MockedData", ofType: "json") else { return }
@@ -83,18 +82,18 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		webService.session = mockedURLSession
 		let url = "https://arbitraryURL.com/path"
 		let exp = expectation(description: "music")
-		var response: Music?
+		var response: [Music]?
 
-		// when you call downloadData() fuction, you can retreive
+		// WHEN you call downloadData() fuction, you can retreive
 		// the music data that you've passed through the mocked url session.
 		webService.downloadData(from: url) { data, error in
 			if let data = data {
-				let music: Music
+				let music: [Music]
 				
 				do {
-					music = try JSONDecoder().decode(Music.self, from: data)
+					music = try JSONDecoder().decode([Music].self, from: data)
 				} catch {
-					fatalError()
+					fatalError("ERROR INFO : \(error)")
 				}
 				
 				response = music
@@ -102,10 +101,10 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 			exp.fulfill()
 		}
 
-		// then
+		// THEN
 		waitForExpectations(timeout: 1) { error in
 			guard let response = response else { return }
-			XCTAssertEqual(response.singer, "Terry Reid");
+			XCTAssertEqual(response.first?.singer, "Led Zepplin");
 		}
 	}
 	
@@ -182,19 +181,3 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 //	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
