@@ -10,8 +10,8 @@ import UIKit
 class PlayListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	let tableView = UITableView()
 	
-	var music: Music?
-	var albumImage: UIImage?
+	var music: [Music]?
+	var albumImage: [UIImage]?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -29,6 +29,7 @@ class PlayListViewController: UIViewController, UITableViewDelegate, UITableView
 		let service = WebServices(through: session)
 		let url = "https://grepp-programmers-challenges.s3.ap-northeast-2.amazonaws.com/2020-flo/song.json"
 
+		// Get music data from url
 		service.downloadData(from: url) { data, error in
 			
 			guard error == nil, let musicData = data else { return }
@@ -36,20 +37,41 @@ class PlayListViewController: UIViewController, UITableViewDelegate, UITableView
 			// Get music data
 			do {
 				let music = try JSONDecoder().decode(Music.self, from: musicData)
-				self.music = music
+				self.music?.append(music)
 			} catch {
 				fatalError()
 			}
 			
-			guard let music = self.music else { return }
 
 			// Get image data from url in music data
-			let imageUrl = music.image
+			guard let imageUrl = self.music?.first?.image else { return }
+			
 			service.downloadData(from: imageUrl) { data, error in
 				
 				guard error == nil, let data = data else { return }
 				
-				self.albumImage = UIImage(data: data)
+				if let image = UIImage(data: data) {
+					self.albumImage?.append(image)
+				}
+			}
+		}
+		
+		// Read local JSON file
+		if let jsonUrl = Bundle.main.url(forResource: "PlayList", withExtension: "json") {
+			
+			do {
+				let data = try Data(contentsOf: jsonUrl)
+				let decodedData = try JSONDecoder().decode([Music].self, from: data)
+				
+				for d in decodedData {
+					self.music?.append(d)
+				}
+
+//				for m in self.music! {
+//					print(m.singer)
+//				}
+			} catch {
+				print(error)
 			}
 		}
 	}
@@ -74,23 +96,20 @@ class PlayListViewController: UIViewController, UITableViewDelegate, UITableView
 	}
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		1
+		return music?.count ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: MusicCell.identifier, for: indexPath) as? MusicCell else { return UITableViewCell() }
 		
-		guard let music = music else {
+		if let music = music?[indexPath.row], let image = albumImage?[indexPath.row] {
+			cell.configureCell(image: image, title: music.title, artist: music.singer)
+		} else {
 			print("Empty cell")
 			cell.configureCell(image: UIImage(named: "placeholder")!, title: "nil", artist: "nil")
-			return cell
 		}
-		
-		if let albumImage = albumImage {
-			cell.configureCell(image: albumImage, title: music.title, artist: music.singer)
-		}
-		
+
 		return cell
 	}
 	
