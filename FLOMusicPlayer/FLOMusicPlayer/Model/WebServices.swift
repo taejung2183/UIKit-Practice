@@ -31,15 +31,15 @@ class WebServices {
 				return
 			}
 
-			// Return with error for nil data
-			guard let data = data else {
-				completion(nil, NSError(domain: "Empty data", code: 10, userInfo: nil))
-				return
-			}
-
-			// Empty data
-			if data.isEmpty {
-				completion(nil, NSError(domain: "Empty data", code: 20, userInfo: nil))
+			if let data = data {
+				// data is not nil but empty.
+				if data.isEmpty {
+					completion(nil, NSError(domain: "Empty data", code: 20, userInfo: nil))
+					return
+				}
+			} else {
+				// data is nil.
+				completion(nil, NSError(domain: "Nil data", code: 20, userInfo: nil))
 				return
 			}
 
