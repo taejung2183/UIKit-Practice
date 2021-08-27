@@ -10,8 +10,8 @@ import UIKit
 class PlayListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	let tableView = UITableView()
 	
-	var music: [Music]?
-	var albumImage: [UIImage]?
+	var music: [Music]? = []
+	var albumImage: [UIImage]? = []
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -33,13 +33,17 @@ class PlayListViewController: UIViewController, UITableViewDelegate, UITableView
 		service.downloadData(from: url) { data, error in
 			
 			guard error == nil, let musicData = data else { return }
-			
+
 			// Get music data
 			do {
 				let music = try JSONDecoder().decode(Music.self, from: musicData)
-				self.music?.append(music)
+
+				if self.music?.append(music) == nil {
+					self.music = [music]
+				}
+
 			} catch {
-				fatalError()
+				fatalError("ERROR INFO: \(error)")
 			}
 			
 
@@ -51,29 +55,31 @@ class PlayListViewController: UIViewController, UITableViewDelegate, UITableView
 				guard error == nil, let data = data else { return }
 				
 				if let image = UIImage(data: data) {
-					self.albumImage?.append(image)
+					if self.albumImage?.append(image) == nil {
+						self.albumImage = [image]
+					}
 				}
 			}
 		}
 		
 		// Read local JSON file
-		if let jsonUrl = Bundle.main.url(forResource: "PlayList", withExtension: "json") {
-			
-			do {
-				let data = try Data(contentsOf: jsonUrl)
-				let decodedData = try JSONDecoder().decode([Music].self, from: data)
-				
-				for d in decodedData {
-					self.music?.append(d)
-				}
-
-//				for m in self.music! {
-//					print(m.singer)
+//		if let jsonUrl = Bundle.main.url(forResource: "PlayList", withExtension: "json") {
+//
+//			do {
+//				let data = try Data(contentsOf: jsonUrl)
+//				let decodedData = try JSONDecoder().decode([Music].self, from: data)
+//
+//				for d in decodedData {
+//					self.music?.append(d)
 //				}
-			} catch {
-				print(error)
-			}
-		}
+//
+////				for m in self.music! {
+////					print(m.singer)
+////				}
+//			} catch {
+//				print(error)
+//			}
+//		}
 	}
 
 	func setUpTableView() {

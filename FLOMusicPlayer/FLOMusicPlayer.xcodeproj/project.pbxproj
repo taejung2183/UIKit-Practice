@@ -112,11 +112,10 @@
 			isa = PBXGroup;
 			children = (
 				460EF0D52692E8F000CCC52D /* FLOMusicPlayer */,
+				46926A4026B0F75500C0265F /* Supporting files */,
+				46926A1F26B0F16A00C0265F /* Resources */,
 				460EF0EC2692E8F200CCC52D /* FLOMusicPlayerTests */,
 				460EF0F72692E8F200CCC52D /* FLOMusicPlayerUITests */,
-				46926A4026B0F75500C0265F /* Supporting files */,
-				46926A2926B0F45900C0265F /* URLTest */,
-				46926A1F26B0F16A00C0265F /* Resources */,
 				46926A2F26B0F50000C0265F /* FLOMusicPlayerURLParsingTests */,
 				460EF0D42692E8F000CCC52D /* Products */,
 			);
@@ -198,13 +197,6 @@
 				4624FDE126CE239500699F4A /* PlayList.json */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		46926A2926B0F45900C0265F /* URLTest */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = URLTest;
 			sourceTree = "<group>";
 		};
 		46926A2F26B0F50000C0265F /* FLOMusicPlayerURLParsingTests */ = {
