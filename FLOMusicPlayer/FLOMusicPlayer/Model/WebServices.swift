@@ -20,12 +20,15 @@ class WebServices {
 		guard let url = URL(string: urlStr) else { fatalError() }
 		
 		let dataTask = session.myDataTask(with: url) { data, response, error in
+			
 			// Return for invalid status
-			let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 200
-			if statusCode != 200 {
+			guard let httpResponse = response as? HTTPURLResponse,
+				  (200...299).contains(httpResponse.statusCode) else {
+				
 				completion(nil, NSError(domain: "Invalid response", code: 30, userInfo: nil))
 				return
 			}
+			
 			guard error == nil else {
 				completion(nil, error)
 				return
@@ -39,7 +42,7 @@ class WebServices {
 				}
 			} else {
 				// data is nil.
-				completion(nil, NSError(domain: "Nil data", code: 20, userInfo: nil))
+				completion(nil, NSError(domain: "Nil data", code: 10, userInfo: nil))
 				return
 			}
 
@@ -49,3 +52,4 @@ class WebServices {
 		dataTask.resume()
 	}
 }
+

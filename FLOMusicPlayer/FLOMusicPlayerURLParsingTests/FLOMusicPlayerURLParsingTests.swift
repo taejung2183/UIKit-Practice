@@ -155,6 +155,33 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 		}
 	}
 	
+	func testBadResponseReturnsError() {
+		// GIVEN
+		
+		// Create valid data and invalid url response.
+		// I just need invalid statusCode. Take any number except 200...299.
+		let jsonString = "valid : data"
+		let data = jsonString.data(using: .utf8)
+		let badResponse = HTTPURLResponse(url: URL(string: "https://fakeurl.com/path")!, statusCode: 444, httpVersion: "1", headerFields: nil)!
+		
+		let mockedURLSession = URLSessionMock(data: data, urlResponse: badResponse, error: nil)
+		webService.session = mockedURLSession
+		let url = "https://FakeURL.com/path"
+		let exp = expectation(description: "Error for invalid status code")
+		var response: Error?
+		
+		// WHEN
+		webService.downloadData(from: url) { data, error in
+			response = error
+			exp.fulfill()
+		}
+
+		// THEN
+		waitForExpectations(timeout: 1) { error in
+			XCTAssertNotNil(response)
+		}
+	}
+	
 //	func testInvalidJsonDataReturnsError() {
 //		// given
 //
@@ -181,3 +208,4 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 //	}
 	
 }
+
