@@ -12,18 +12,8 @@ class PlayListViewController: UIViewController {
 	let tableView = UITableView()
 	
 	override func viewDidLoad() {
-		
 		view.addSubview(tableView)
-//		setupTableView()
 	}
-	
-//	func setupTableView() {
-//
-//	}
-	
-//	override func viewDidLayoutSubviews() {
-//		tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-//	}
 }
 
 //class PlayListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
