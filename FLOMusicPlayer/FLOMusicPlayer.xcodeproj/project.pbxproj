@@ -12,36 +12,26 @@
 		460EF0DB2692E8F000CCC52D /* PlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF0DA2692E8F000CCC52D /* PlayListViewController.swift */; };
 		460EF0E02692E8F200CCC52D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 460EF0DF2692E8F200CCC52D /* Assets.xcassets */; };
 		460EF0E32692E8F200CCC52D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 460EF0E12692E8F200CCC52D /* LaunchScreen.storyboard */; };
-		460EF0EE2692E8F200CCC52D /* FLOMusicPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF0ED2692E8F200CCC52D /* FLOMusicPlayerTests.swift */; };
-		460EF0F92692E8F200CCC52D /* FLOMusicPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF0F82692E8F200CCC52D /* FLOMusicPlayerUITests.swift */; };
 		4624FDE226CE239500699F4A /* PlayList.json in Resources */ = {isa = PBXBuildFile; fileRef = 4624FDE126CE239500699F4A /* PlayList.json */; };
-		4624FDE326CE239500699F4A /* PlayList.json in Resources */ = {isa = PBXBuildFile; fileRef = 4624FDE126CE239500699F4A /* PlayList.json */; };
 		46838E8426C29129005C5DBE /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46838E8326C29129005C5DBE /* MusicCell.swift */; };
 		46926A2126B0F29700C0265F /* MockedData.json in Resources */ = {isa = PBXBuildFile; fileRef = 46926A2026B0F29700C0265F /* MockedData.json */; };
-		46926A3126B0F50000C0265F /* FLOMusicPlayerURLParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46926A3026B0F50000C0265F /* FLOMusicPlayerURLParsingTests.swift */; };
 		46926A4226B0F76E00C0265F /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46926A4126B0F76E00C0265F /* NetworkMonitor.swift */; };
 		469826C626C0E8480037B52C /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469826C526C0E8480037B52C /* Music.swift */; };
+		46C3F95526DCC4C300AAAAF1 /* FLOMusicPlayerNetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3F95426DCC4C300AAAAF1 /* FLOMusicPlayerNetworkingTests.swift */; };
+		46C3F98026DCCBC600AAAAF1 /* PlayListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3F97F26DCCBC600AAAAF1 /* PlayListViewControllerTests.swift */; };
 		46C63A5F26B3C2C400207E71 /* MockedURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C63A5E26B3C2C400207E71 /* MockedURLSession.swift */; };
 		46C63A6526B4BE5300207E71 /* WebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C63A6426B4BE5300207E71 /* WebServices.swift */; };
-		46C63A6A26BA5C0200207E71 /* MockedData.json in Resources */ = {isa = PBXBuildFile; fileRef = 46926A2026B0F29700C0265F /* MockedData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		460EF0EA2692E8F200CCC52D /* PBXContainerItemProxy */ = {
+		46C3F95726DCC4C300AAAAF1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 460EF0CB2692E8F000CCC52D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 460EF0D22692E8F000CCC52D;
 			remoteInfo = FLOMusicPlayer;
 		};
-		460EF0F52692E8F200CCC52D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 460EF0CB2692E8F000CCC52D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 460EF0D22692E8F000CCC52D;
-			remoteInfo = FLOMusicPlayer;
-		};
-		46926A3326B0F50000C0265F /* PBXContainerItemProxy */ = {
+		46C3F98226DCCBC600AAAAF1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 460EF0CB2692E8F000CCC52D /* Project object */;
 			proxyType = 1;
@@ -58,20 +48,17 @@
 		460EF0DF2692E8F200CCC52D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		460EF0E22692E8F200CCC52D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		460EF0E42692E8F200CCC52D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		460EF0E92692E8F200CCC52D /* FLOMusicPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FLOMusicPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		460EF0ED2692E8F200CCC52D /* FLOMusicPlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLOMusicPlayerTests.swift; sourceTree = "<group>"; };
-		460EF0EF2692E8F200CCC52D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		460EF0F42692E8F200CCC52D /* FLOMusicPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FLOMusicPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		460EF0F82692E8F200CCC52D /* FLOMusicPlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLOMusicPlayerUITests.swift; sourceTree = "<group>"; };
-		460EF0FA2692E8F200CCC52D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4624FDE126CE239500699F4A /* PlayList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PlayList.json; sourceTree = "<group>"; };
 		46838E8326C29129005C5DBE /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
 		46926A2026B0F29700C0265F /* MockedData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockedData.json; sourceTree = "<group>"; };
-		46926A2E26B0F50000C0265F /* FLOMusicPlayerURLParsingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FLOMusicPlayerURLParsingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		46926A3026B0F50000C0265F /* FLOMusicPlayerURLParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLOMusicPlayerURLParsingTests.swift; sourceTree = "<group>"; };
-		46926A3226B0F50000C0265F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46926A4126B0F76E00C0265F /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		469826C526C0E8480037B52C /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
+		46C3F95226DCC4C300AAAAF1 /* FLOMusicPlayerNetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FLOMusicPlayerNetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		46C3F95426DCC4C300AAAAF1 /* FLOMusicPlayerNetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLOMusicPlayerNetworkingTests.swift; sourceTree = "<group>"; };
+		46C3F95626DCC4C300AAAAF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46C3F97D26DCCBC600AAAAF1 /* PlayListViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlayListViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		46C3F97F26DCCBC600AAAAF1 /* PlayListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListViewControllerTests.swift; sourceTree = "<group>"; };
+		46C3F98126DCCBC600AAAAF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46C63A5E26B3C2C400207E71 /* MockedURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedURLSession.swift; sourceTree = "<group>"; };
 		46C63A6426B4BE5300207E71 /* WebServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,21 +71,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		460EF0E62692E8F200CCC52D /* Frameworks */ = {
+		46C3F94F26DCC4C300AAAAF1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		460EF0F12692E8F200CCC52D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		46926A2B26B0F50000C0265F /* Frameworks */ = {
+		46C3F97A26DCCBC600AAAAF1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -114,9 +94,8 @@
 				460EF0D52692E8F000CCC52D /* FLOMusicPlayer */,
 				46926A4026B0F75500C0265F /* Supporting files */,
 				46926A1F26B0F16A00C0265F /* Resources */,
-				460EF0EC2692E8F200CCC52D /* FLOMusicPlayerTests */,
-				460EF0F72692E8F200CCC52D /* FLOMusicPlayerUITests */,
-				46926A2F26B0F50000C0265F /* FLOMusicPlayerURLParsingTests */,
+				46C3F95326DCC4C300AAAAF1 /* FLOMusicPlayerNetworkingTests */,
+				46C3F97E26DCCBC600AAAAF1 /* PlayListViewControllerTests */,
 				460EF0D42692E8F000CCC52D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -125,9 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				460EF0D32692E8F000CCC52D /* FLOMusicPlayer.app */,
-				460EF0E92692E8F200CCC52D /* FLOMusicPlayerTests.xctest */,
-				460EF0F42692E8F200CCC52D /* FLOMusicPlayerUITests.xctest */,
-				46926A2E26B0F50000C0265F /* FLOMusicPlayerURLParsingTests.xctest */,
+				46C3F95226DCC4C300AAAAF1 /* FLOMusicPlayerNetworkingTests.xctest */,
+				46C3F97D26DCCBC600AAAAF1 /* PlayListViewControllerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,24 +123,6 @@
 				460EF0E42692E8F200CCC52D /* Info.plist */,
 			);
 			path = FLOMusicPlayer;
-			sourceTree = "<group>";
-		};
-		460EF0EC2692E8F200CCC52D /* FLOMusicPlayerTests */ = {
-			isa = PBXGroup;
-			children = (
-				460EF0ED2692E8F200CCC52D /* FLOMusicPlayerTests.swift */,
-				460EF0EF2692E8F200CCC52D /* Info.plist */,
-			);
-			path = FLOMusicPlayerTests;
-			sourceTree = "<group>";
-		};
-		460EF0F72692E8F200CCC52D /* FLOMusicPlayerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				460EF0F82692E8F200CCC52D /* FLOMusicPlayerUITests.swift */,
-				460EF0FA2692E8F200CCC52D /* Info.plist */,
-			);
-			path = FLOMusicPlayerUITests;
 			sourceTree = "<group>";
 		};
 		460EF1092692E91A00CCC52D /* Model */ = {
@@ -199,15 +159,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		46926A2F26B0F50000C0265F /* FLOMusicPlayerURLParsingTests */ = {
-			isa = PBXGroup;
-			children = (
-				46926A3026B0F50000C0265F /* FLOMusicPlayerURLParsingTests.swift */,
-				46926A3226B0F50000C0265F /* Info.plist */,
-			);
-			path = FLOMusicPlayerURLParsingTests;
-			sourceTree = "<group>";
-		};
 		46926A4026B0F75500C0265F /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +166,24 @@
 				46C63A5E26B3C2C400207E71 /* MockedURLSession.swift */,
 			);
 			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		46C3F95326DCC4C300AAAAF1 /* FLOMusicPlayerNetworkingTests */ = {
+			isa = PBXGroup;
+			children = (
+				46C3F95426DCC4C300AAAAF1 /* FLOMusicPlayerNetworkingTests.swift */,
+				46C3F95626DCC4C300AAAAF1 /* Info.plist */,
+			);
+			path = FLOMusicPlayerNetworkingTests;
+			sourceTree = "<group>";
+		};
+		46C3F97E26DCCBC600AAAAF1 /* PlayListViewControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				46C3F97F26DCCBC600AAAAF1 /* PlayListViewControllerTests.swift */,
+				46C3F98126DCCBC600AAAAF1 /* Info.plist */,
+			);
+			path = PlayListViewControllerTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,58 +206,40 @@
 			productReference = 460EF0D32692E8F000CCC52D /* FLOMusicPlayer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		460EF0E82692E8F200CCC52D /* FLOMusicPlayerTests */ = {
+		46C3F95126DCC4C300AAAAF1 /* FLOMusicPlayerNetworkingTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 460EF1002692E8F200CCC52D /* Build configuration list for PBXNativeTarget "FLOMusicPlayerTests" */;
+			buildConfigurationList = 46C3F95926DCC4C300AAAAF1 /* Build configuration list for PBXNativeTarget "FLOMusicPlayerNetworkingTests" */;
 			buildPhases = (
-				460EF0E52692E8F200CCC52D /* Sources */,
-				460EF0E62692E8F200CCC52D /* Frameworks */,
-				460EF0E72692E8F200CCC52D /* Resources */,
+				46C3F94E26DCC4C300AAAAF1 /* Sources */,
+				46C3F94F26DCC4C300AAAAF1 /* Frameworks */,
+				46C3F95026DCC4C300AAAAF1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				460EF0EB2692E8F200CCC52D /* PBXTargetDependency */,
+				46C3F95826DCC4C300AAAAF1 /* PBXTargetDependency */,
 			);
-			name = FLOMusicPlayerTests;
-			productName = FLOMusicPlayerTests;
-			productReference = 460EF0E92692E8F200CCC52D /* FLOMusicPlayerTests.xctest */;
+			name = FLOMusicPlayerNetworkingTests;
+			productName = FLOMusicPlayerNetworkingTests;
+			productReference = 46C3F95226DCC4C300AAAAF1 /* FLOMusicPlayerNetworkingTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		460EF0F32692E8F200CCC52D /* FLOMusicPlayerUITests */ = {
+		46C3F97C26DCCBC600AAAAF1 /* PlayListViewControllerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 460EF1032692E8F200CCC52D /* Build configuration list for PBXNativeTarget "FLOMusicPlayerUITests" */;
+			buildConfigurationList = 46C3F98426DCCBC600AAAAF1 /* Build configuration list for PBXNativeTarget "PlayListViewControllerTests" */;
 			buildPhases = (
-				460EF0F02692E8F200CCC52D /* Sources */,
-				460EF0F12692E8F200CCC52D /* Frameworks */,
-				460EF0F22692E8F200CCC52D /* Resources */,
+				46C3F97926DCCBC600AAAAF1 /* Sources */,
+				46C3F97A26DCCBC600AAAAF1 /* Frameworks */,
+				46C3F97B26DCCBC600AAAAF1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				460EF0F62692E8F200CCC52D /* PBXTargetDependency */,
+				46C3F98326DCCBC600AAAAF1 /* PBXTargetDependency */,
 			);
-			name = FLOMusicPlayerUITests;
-			productName = FLOMusicPlayerUITests;
-			productReference = 460EF0F42692E8F200CCC52D /* FLOMusicPlayerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
-		46926A2D26B0F50000C0265F /* FLOMusicPlayerURLParsingTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 46926A3526B0F50000C0265F /* Build configuration list for PBXNativeTarget "FLOMusicPlayerURLParsingTests" */;
-			buildPhases = (
-				46926A2A26B0F50000C0265F /* Sources */,
-				46926A2B26B0F50000C0265F /* Frameworks */,
-				46926A2C26B0F50000C0265F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				46926A3426B0F50000C0265F /* PBXTargetDependency */,
-			);
-			name = FLOMusicPlayerURLParsingTests;
-			productName = FLOMusicPlayerURLParsingTests;
-			productReference = 46926A2E26B0F50000C0265F /* FLOMusicPlayerURLParsingTests.xctest */;
+			name = PlayListViewControllerTests;
+			productName = PlayListViewControllerTests;
+			productReference = 46C3F97D26DCCBC600AAAAF1 /* PlayListViewControllerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -303,15 +254,11 @@
 					460EF0D22692E8F000CCC52D = {
 						CreatedOnToolsVersion = 12.3;
 					};
-					460EF0E82692E8F200CCC52D = {
+					46C3F95126DCC4C300AAAAF1 = {
 						CreatedOnToolsVersion = 12.3;
 						TestTargetID = 460EF0D22692E8F000CCC52D;
 					};
-					460EF0F32692E8F200CCC52D = {
-						CreatedOnToolsVersion = 12.3;
-						TestTargetID = 460EF0D22692E8F000CCC52D;
-					};
-					46926A2D26B0F50000C0265F = {
+					46C3F97C26DCCBC600AAAAF1 = {
 						CreatedOnToolsVersion = 12.3;
 						TestTargetID = 460EF0D22692E8F000CCC52D;
 					};
@@ -331,9 +278,8 @@
 			projectRoot = "";
 			targets = (
 				460EF0D22692E8F000CCC52D /* FLOMusicPlayer */,
-				460EF0E82692E8F200CCC52D /* FLOMusicPlayerTests */,
-				460EF0F32692E8F200CCC52D /* FLOMusicPlayerUITests */,
-				46926A2D26B0F50000C0265F /* FLOMusicPlayerURLParsingTests */,
+				46C3F95126DCC4C300AAAAF1 /* FLOMusicPlayerNetworkingTests */,
+				46C3F97C26DCCBC600AAAAF1 /* PlayListViewControllerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -350,26 +296,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		460EF0E72692E8F200CCC52D /* Resources */ = {
+		46C3F95026DCC4C300AAAAF1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		460EF0F22692E8F200CCC52D /* Resources */ = {
+		46C3F97B26DCCBC600AAAAF1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		46926A2C26B0F50000C0265F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				46C63A6A26BA5C0200207E71 /* MockedData.json in Resources */,
-				4624FDE326CE239500699F4A /* PlayList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,47 +328,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		460EF0E52692E8F200CCC52D /* Sources */ = {
+		46C3F94E26DCC4C300AAAAF1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				460EF0EE2692E8F200CCC52D /* FLOMusicPlayerTests.swift in Sources */,
+				46C3F95526DCC4C300AAAAF1 /* FLOMusicPlayerNetworkingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		460EF0F02692E8F200CCC52D /* Sources */ = {
+		46C3F97926DCCBC600AAAAF1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				460EF0F92692E8F200CCC52D /* FLOMusicPlayerUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		46926A2A26B0F50000C0265F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				46926A3126B0F50000C0265F /* FLOMusicPlayerURLParsingTests.swift in Sources */,
+				46C3F98026DCCBC600AAAAF1 /* PlayListViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		460EF0EB2692E8F200CCC52D /* PBXTargetDependency */ = {
+		46C3F95826DCC4C300AAAAF1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 460EF0D22692E8F000CCC52D /* FLOMusicPlayer */;
-			targetProxy = 460EF0EA2692E8F200CCC52D /* PBXContainerItemProxy */;
+			targetProxy = 46C3F95726DCC4C300AAAAF1 /* PBXContainerItemProxy */;
 		};
-		460EF0F62692E8F200CCC52D /* PBXTargetDependency */ = {
+		46C3F98326DCCBC600AAAAF1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 460EF0D22692E8F000CCC52D /* FLOMusicPlayer */;
-			targetProxy = 460EF0F52692E8F200CCC52D /* PBXContainerItemProxy */;
-		};
-		46926A3426B0F50000C0265F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 460EF0D22692E8F000CCC52D /* FLOMusicPlayer */;
-			targetProxy = 46926A3326B0F50000C0265F /* PBXContainerItemProxy */;
+			targetProxy = 46C3F98226DCCBC600AAAAF1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -601,21 +525,19 @@
 			};
 			name = Release;
 		};
-		460EF1012692E8F200CCC52D /* Debug */ = {
+		46C3F95A26DCC4C300AAAAF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R4778782G2;
-				INFOPLIST_FILE = FLOMusicPlayerTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				INFOPLIST_FILE = FLOMusicPlayerNetworkingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.taejeong.FLOMusicPlayerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.taejeong.FLOMusicPlayerNetworkingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -623,21 +545,19 @@
 			};
 			name = Debug;
 		};
-		460EF1022692E8F200CCC52D /* Release */ = {
+		46C3F95B26DCC4C300AAAAF1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R4778782G2;
-				INFOPLIST_FILE = FLOMusicPlayerTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				INFOPLIST_FILE = FLOMusicPlayerNetworkingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.taejeong.FLOMusicPlayerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.taejeong.FLOMusicPlayerNetworkingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -645,59 +565,19 @@
 			};
 			name = Release;
 		};
-		460EF1042692E8F200CCC52D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R4778782G2;
-				INFOPLIST_FILE = FLOMusicPlayerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.taejeong.FLOMusicPlayerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FLOMusicPlayer;
-			};
-			name = Debug;
-		};
-		460EF1052692E8F200CCC52D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R4778782G2;
-				INFOPLIST_FILE = FLOMusicPlayerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.taejeong.FLOMusicPlayerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FLOMusicPlayer;
-			};
-			name = Release;
-		};
-		46926A3626B0F50000C0265F /* Debug */ = {
+		46C3F98526DCCBC600AAAAF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R4778782G2;
-				INFOPLIST_FILE = FLOMusicPlayerURLParsingTests/Info.plist;
+				INFOPLIST_FILE = PlayListViewControllerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.taejeong.FLOMusicPlayerURLParsingTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.taejeong.PlayListViewControllerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -705,19 +585,19 @@
 			};
 			name = Debug;
 		};
-		46926A3726B0F50000C0265F /* Release */ = {
+		46C3F98626DCCBC600AAAAF1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R4778782G2;
-				INFOPLIST_FILE = FLOMusicPlayerURLParsingTests/Info.plist;
+				INFOPLIST_FILE = PlayListViewControllerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.taejeong.FLOMusicPlayerURLParsingTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.taejeong.PlayListViewControllerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -746,29 +626,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		460EF1002692E8F200CCC52D /* Build configuration list for PBXNativeTarget "FLOMusicPlayerTests" */ = {
+		46C3F95926DCC4C300AAAAF1 /* Build configuration list for PBXNativeTarget "FLOMusicPlayerNetworkingTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				460EF1012692E8F200CCC52D /* Debug */,
-				460EF1022692E8F200CCC52D /* Release */,
+				46C3F95A26DCC4C300AAAAF1 /* Debug */,
+				46C3F95B26DCC4C300AAAAF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		460EF1032692E8F200CCC52D /* Build configuration list for PBXNativeTarget "FLOMusicPlayerUITests" */ = {
+		46C3F98426DCCBC600AAAAF1 /* Build configuration list for PBXNativeTarget "PlayListViewControllerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				460EF1042692E8F200CCC52D /* Debug */,
-				460EF1052692E8F200CCC52D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		46926A3526B0F50000C0265F /* Build configuration list for PBXNativeTarget "FLOMusicPlayerURLParsingTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				46926A3626B0F50000C0265F /* Debug */,
-				46926A3726B0F50000C0265F /* Release */,
+				46C3F98526DCCBC600AAAAF1 /* Debug */,
+				46C3F98626DCCBC600AAAAF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

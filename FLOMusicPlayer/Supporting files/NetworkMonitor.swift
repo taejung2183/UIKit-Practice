@@ -25,7 +25,7 @@ class NetworkMonitor {
 		monitor.start(queue: queue)
 	}
 
-	func stopMonitoring() {
-		monitor.cancel()
-	}
+//	func stopMonitoring() {
+//		monitor.cancel()
+//	}
 }

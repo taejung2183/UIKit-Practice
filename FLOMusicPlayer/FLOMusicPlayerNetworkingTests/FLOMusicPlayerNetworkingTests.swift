@@ -8,7 +8,7 @@
 import XCTest
 @testable import FLOMusicPlayer
 
-class FLOMusicPlayerURLParsingTests: XCTestCase {
+class FLOMusicPlayerNetworkingTests: XCTestCase {
 	let networkMonitor = NetworkMonitor.shared
 	var sut: URLSession!
 	var mockedSession: URLSessionMock!
@@ -181,31 +181,4 @@ class FLOMusicPlayerURLParsingTests: XCTestCase {
 			XCTAssertNotNil(response)
 		}
 	}
-	
-//	func testInvalidJsonDataReturnsError() {
-//		// given
-//
-//		// Create invalid json data
-//		let jsonString = "INVALID"
-//		let data = jsonString.data(using: .utf8)
-//
-//		let mockedURLSession = URLSessionMock(data: data, urlResponse: nil, error: nil)
-//		webService.session = mockedURLSession
-//		let url = "https://arbitraryURL.com/path"
-//		let exp = expectation(description: "Error for invalid json data")
-//		var invalidJsonResponse: Error?
-//
-//		// when
-//		webService.downloadData(from: url) { data, error in
-//			invalidJsonResponse = error
-//			exp.fulfill()
-//		}
-//
-//		// then
-//		waitForExpectations(timeout: 1) { error in
-//			XCTAssertNotNil(invalidJsonResponse)
-//		}
-//	}
-	
 }
-
