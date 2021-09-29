@@ -13,6 +13,18 @@ class PlayListViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		view.addSubview(tableView)
+		setUpTableView()
+	}
+	
+	func setUpTableView() {
+		// tableView configuration.
+		tableView.allowsSelection = true
+		tableView.isUserInteractionEnabled = true
+		tableView.translatesAutoresizingMaskIntoConstraints = false
+		
+		// Configure constraints.
+//		tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+
 	}
 }
 
