@@ -21,6 +21,8 @@
 		46C3F98026DCCBC600AAAAF1 /* PlayListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3F97F26DCCBC600AAAAF1 /* PlayListViewControllerTests.swift */; };
 		46C63A5F26B3C2C400207E71 /* MockedURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C63A5E26B3C2C400207E71 /* MockedURLSession.swift */; };
 		46C63A6526B4BE5300207E71 /* WebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C63A6426B4BE5300207E71 /* WebServices.swift */; };
+		46C6C8C3270446620043D730 /* PlayListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C6C8C2270446620043D730 /* PlayListDataSource.swift */; };
+		46F4571E27043EC500D8B080 /* PlayListDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F4571D27043EC500D8B080 /* PlayListDataSourceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		46C3F98126DCCBC600AAAAF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46C63A5E26B3C2C400207E71 /* MockedURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedURLSession.swift; sourceTree = "<group>"; };
 		46C63A6426B4BE5300207E71 /* WebServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServices.swift; sourceTree = "<group>"; };
+		46C6C8C2270446620043D730 /* PlayListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListDataSource.swift; sourceTree = "<group>"; };
+		46F4571D27043EC500D8B080 /* PlayListDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListDataSourceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				460EF0DA2692E8F000CCC52D /* PlayListViewController.swift */,
+				46C6C8C2270446620043D730 /* PlayListDataSource.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 		46C3F97E26DCCBC600AAAAF1 /* PlayListViewControllerTests */ = {
 			isa = PBXGroup;
 			children = (
+				46F4571D27043EC500D8B080 /* PlayListDataSourceTests.swift */,
 				46C3F97F26DCCBC600AAAAF1 /* PlayListViewControllerTests.swift */,
 				46C3F98126DCCBC600AAAAF1 /* Info.plist */,
 			);
@@ -321,6 +327,7 @@
 				46926A4226B0F76E00C0265F /* NetworkMonitor.swift in Sources */,
 				460EF0D72692E8F000CCC52D /* AppDelegate.swift in Sources */,
 				46838E8426C29129005C5DBE /* MusicCell.swift in Sources */,
+				46C6C8C3270446620043D730 /* PlayListDataSource.swift in Sources */,
 				46C63A6526B4BE5300207E71 /* WebServices.swift in Sources */,
 				469826C626C0E8480037B52C /* Music.swift in Sources */,
 				460EF0D92692E8F000CCC52D /* SceneDelegate.swift in Sources */,
@@ -340,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46F4571E27043EC500D8B080 /* PlayListDataSourceTests.swift in Sources */,
 				46C3F98026DCCBC600AAAAF1 /* PlayListViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

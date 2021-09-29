@@ -10,8 +10,10 @@ import UIKit
 class PlayListViewController: UIViewController {
 	
 	let tableView = UITableView()
+	var dataSource: PlayListDataSource!
 	
 	override func viewDidLoad() {
+		super.viewDidLoad()
 		view.addSubview(tableView)
 		setUpTableView()
 	}
@@ -22,9 +24,10 @@ class PlayListViewController: UIViewController {
 		tableView.isUserInteractionEnabled = true
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		
-		// Configure constraints.
-//		tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-
+		// Make table view covers the entire super view.
+		tableView.frame = view.bounds
+		
+		tableView.dataSource = dataSource
 	}
 }
 
