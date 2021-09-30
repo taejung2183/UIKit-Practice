@@ -28,6 +28,7 @@ class PlayListViewController: UIViewController {
 		tableView.frame = view.bounds
 		
 		tableView.dataSource = dataSource
+		tableView.register(UITableViewCell.self, forCellReuseIdentifier: PlayListDataSource.identifier)
 	}
 }
 

@@ -10,6 +10,7 @@ import XCTest
 
 class PlayListDataSourceTests: XCTestCase {
 	
+	
 	func test_has_one_section() {
 		let sut = PlayListDataSource(music: [])
 		
@@ -25,8 +26,7 @@ class PlayListDataSourceTests: XCTestCase {
 	
 	func test_numbers_of_rows_are_the_music_count() {
 		let music: [Music] = [
-			Music(singer: "one", album: "one", title: "one", duration: 1, image: "one", file: "one", lyrics: "one"),
-			Music(singer: "two", album: "two", title: "two", duration: 2, image: "two", file: "two", lyrics: "two")
+			Music(singer: "one", album: "", title: "", duration: 0, image: "", file: "", lyrics: "")
 		]
 		
 		let sut = PlayListDataSource(music: music)
@@ -38,5 +38,39 @@ class PlayListDataSourceTests: XCTestCase {
 		
 		XCTAssertEqual(numOfRows, music.count)
 	}
-}
+	
+	func test_show_data_for_rows_correctly() {
+		let music: [Music] = [
+			Music(singer: "one", album: "", title: "", duration: 0, image: "", file: "", lyrics: "")
+		]
+		
+		let sut = PlayListDataSource(music: music)
+		
+		let tableView = UITableView()
+		tableView.dataSource = sut
+		tableView.register(UITableViewCell.self, forCellReuseIdentifier: PlayListDataSource.identifier)
+		tableView.reloadData()
 
+		let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0))
+
+		XCTAssertEqual("one", cell?.textLabel?.text)
+	}
+	
+	func test_register_reusable_cell() {
+		let music: [Music] = [
+			Music(singer: "one", album: "", title: "", duration: 0, image: "", file: "", lyrics: "")
+		]
+		
+		let sut = PlayListDataSource(music: music)
+		let vc = PlayListViewController()
+		vc.dataSource = sut
+		vc.loadViewIfNeeded()
+		
+		let tableView = vc.tableView
+		tableView.reloadData()
+
+		let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0))
+
+		XCTAssertEqual(PlayListDataSource.identifier, cell?.reuseIdentifier)
+	}
+}

@@ -10,7 +10,8 @@ import UIKit
 class PlayListDataSource: NSObject, UITableViewDataSource {
 	
 	private let music: [Music]
-	
+	static let identifier = "MusicCell"
+
 	init(music: [Music]) {
 		self.music = music
 		super.init()
@@ -21,6 +22,10 @@ class PlayListDataSource: NSObject, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		UITableViewCell()
+//		let cell = UITableViewCell()
+		let cell = tableView.dequeueReusableCell(withIdentifier: PlayListDataSource.identifier, for: indexPath)
+		cell.textLabel?.text = music[indexPath.row].singer
+		return cell
 	}
 }
+
