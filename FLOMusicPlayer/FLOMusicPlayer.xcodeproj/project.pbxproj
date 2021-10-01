@@ -13,6 +13,8 @@
 		460EF0E02692E8F200CCC52D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 460EF0DF2692E8F200CCC52D /* Assets.xcassets */; };
 		460EF0E32692E8F200CCC52D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 460EF0E12692E8F200CCC52D /* LaunchScreen.storyboard */; };
 		4624FDE226CE239500699F4A /* PlayList.json in Resources */ = {isa = PBXBuildFile; fileRef = 4624FDE126CE239500699F4A /* PlayList.json */; };
+		4657BE4727069CFB004FCC0B /* MusicCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4657BE4627069CFB004FCC0B /* MusicCellTests.swift */; };
+		4657BE4C2706D30D004FCC0B /* MusicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4657BE4B2706D30D004FCC0B /* MusicTests.swift */; };
 		46838E8426C29129005C5DBE /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46838E8326C29129005C5DBE /* MusicCell.swift */; };
 		46926A2126B0F29700C0265F /* MockedData.json in Resources */ = {isa = PBXBuildFile; fileRef = 46926A2026B0F29700C0265F /* MockedData.json */; };
 		46926A4226B0F76E00C0265F /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46926A4126B0F76E00C0265F /* NetworkMonitor.swift */; };
@@ -51,6 +53,8 @@
 		460EF0E22692E8F200CCC52D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		460EF0E42692E8F200CCC52D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4624FDE126CE239500699F4A /* PlayList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PlayList.json; sourceTree = "<group>"; };
+		4657BE4627069CFB004FCC0B /* MusicCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCellTests.swift; sourceTree = "<group>"; };
+		4657BE4B2706D30D004FCC0B /* MusicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTests.swift; sourceTree = "<group>"; };
 		46838E8326C29129005C5DBE /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
 		46926A2026B0F29700C0265F /* MockedData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockedData.json; sourceTree = "<group>"; };
 		46926A4126B0F76E00C0265F /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 		46C3F97E26DCCBC600AAAAF1 /* PlayListViewControllerTests */ = {
 			isa = PBXGroup;
 			children = (
+				4657BE4B2706D30D004FCC0B /* MusicTests.swift */,
+				4657BE4627069CFB004FCC0B /* MusicCellTests.swift */,
 				46F4571D27043EC500D8B080 /* PlayListDataSourceTests.swift */,
 				46C3F97F26DCCBC600AAAAF1 /* PlayListViewControllerTests.swift */,
 				46C3F98126DCCBC600AAAAF1 /* Info.plist */,
@@ -349,6 +355,8 @@
 			files = (
 				46F4571E27043EC500D8B080 /* PlayListDataSourceTests.swift in Sources */,
 				46C3F98026DCCBC600AAAAF1 /* PlayListViewControllerTests.swift in Sources */,
+				4657BE4727069CFB004FCC0B /* MusicCellTests.swift in Sources */,
+				4657BE4C2706D30D004FCC0B /* MusicTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

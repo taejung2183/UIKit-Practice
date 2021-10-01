@@ -61,7 +61,7 @@ class PlayListDataSourceTests: XCTestCase {
 
 		// WHEN you create table view with given data source and register reusable cell,
 		let tableView = setTableView()
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: PlayListDataSource.identifier)
+		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MusicCell")
 		tableView.reloadData()
 
 		// THEN there should be correct data on the correct cell.
@@ -83,6 +83,6 @@ class PlayListDataSourceTests: XCTestCase {
 
 		// THEN the tableView cell should have reusable cell with the identifier.
 		let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0))
-		XCTAssertEqual(PlayListDataSource.identifier, cell?.reuseIdentifier)
+		XCTAssertEqual("MusicCell", cell?.reuseIdentifier)
 	}
 }

@@ -16,7 +16,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 		
 		let window = UIWindow(windowScene: windowScene)
-		window.rootViewController = PlayListViewController()
+		
+		// Where do you pass your music data to the root view which is PlayListViewController?
+//		let music = [
+//			Music(singer: "one", album: "", title: "", duration: 0, image: "", file: "", lyrics: ""),
+//			Music(singer: "two", album: "", title: "", duration: 0, image: "", file: "", lyrics: "")
+//		]
+//		let source = PlayListDataSource(music: music)
+		
+		let vc = PlayListViewController()
+		
+//		vc.dataSource = source
+		
+		window.rootViewController = vc
 		window.makeKeyAndVisible()
 		
 		self.window = window

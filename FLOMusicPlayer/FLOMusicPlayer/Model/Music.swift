@@ -15,7 +15,7 @@ class Music: Codable {
 	let image: String
 	let file: String
 	let lyrics: String
-	
+
 	init(singer: String, album: String, title: String, duration: Int, image: String, file: String, lyrics: String) {
 		self.singer = singer
 		self.album = album

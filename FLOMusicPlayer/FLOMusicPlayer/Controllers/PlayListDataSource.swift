@@ -23,7 +23,7 @@ class PlayListDataSource: NSObject, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //		let cell = UITableViewCell()
-		let cell = tableView.dequeueReusableCell(withIdentifier: PlayListDataSource.identifier, for: indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: "MusicCell", for: indexPath)
 		cell.textLabel?.text = music[indexPath.row].singer
 		return cell
 	}

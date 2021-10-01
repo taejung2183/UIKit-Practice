@@ -10,6 +10,8 @@ import UIKit
 class PlayListViewController: UIViewController {
 	
 	let tableView = UITableView()
+	// PlayListViewController is root view controller.
+	// Where do you feed dataSource before the app runs?
 	var dataSource: PlayListDataSource!
 	
 	override func viewDidLoad() {
@@ -28,7 +30,7 @@ class PlayListViewController: UIViewController {
 		tableView.frame = view.bounds
 		
 		tableView.dataSource = dataSource
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: PlayListDataSource.identifier)
+		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MusicCell")
 	}
 }
 
@@ -48,7 +50,29 @@ class PlayListViewController: UIViewController {
 //		tableView.delegate = self
 //		tableView.dataSource = self
 //	}
-//
+
+	/*
+	
+	I am downloading all the music data from the url
+	right after the app runs. (Precisely, when the
+	root view is initiated.)
+	
+	If it was an actual streaming app, (of course you
+	should have all the data if it's something like a
+	MP3.) retieving the particular data of the music
+	right before you actually stream the music will be
+	more efficient.
+
+
+	https://joesusnick.medium.com/tdd-tableviews-less-boring-than-you-think-fe080fcc41d1
+	https://developer.apple.com/videos/play/wwdc2017/414/
+	
+	Check out the references above if you want to
+	implement URLOpener protocol to open url after you
+	touch the cell.
+
+	*/
+
 //	func getMusicFromURL() {
 //		let session = URLSession(configuration: .default)
 //		let service = WebServices(through: session)
