@@ -30,7 +30,7 @@ class PlayListViewController: UIViewController {
 		tableView.frame = view.bounds
 		
 		tableView.dataSource = dataSource
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MusicCell")
+		tableView.register(MusicCell.self, forCellReuseIdentifier: MusicCell.identifier)
 	}
 }
 
