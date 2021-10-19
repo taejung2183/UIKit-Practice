@@ -9,12 +9,20 @@ import XCTest
 @testable import FLOMusicPlayer
 
 class MusicCellTests: XCTestCase {
-//	let cell = MusicCell()
-//	var contentView: UIView!
-//	var imgView: UIImageView!
-//	var titleLbl: UILabel!
-//	var artistLbl: UILabel!
-//	var moreBtn: UIButton!
+	var sut: MusicCell!
+	var contentView: UIView!
+	
+	override func setUpWithError() throws {
+		try super.setUpWithError()
+		sut = MusicCell()
+		contentView = sut.contentView
+	}
+	
+	override func tearDownWithError() throws {
+		sut = nil
+		contentView = nil
+		try super.tearDownWithError()
+	}
 
 	// Make MusicCell class with static constant identifier.
 	func test_MusicCell_class() {
@@ -34,20 +42,18 @@ class MusicCellTests: XCTestCase {
 	// MARK: UI Properties
 	
 	func test_imageView_on_the_MusicCell() {
-		let cell = MusicCell()
-		let imgView = cell.albumImage
+		let imgView = sut.albumImage
 		
 		let config = imgView.image == UIImage(named: "placeholder") &&
 			(imgView.contentMode == .scaleAspectFit) &&
 			imgView.clipsToBounds
 
 		XCTAssertTrue(config)
-		XCTAssertEqual(imgView.superview, cell.contentView)
+		XCTAssertEqual(imgView.superview, sut.contentView)
 	}
 	
 	func test_titleLabel_on_the_MusicCell() {
-		let cell = MusicCell()
-		let titleLbl = cell.titleLabel
+		let titleLbl = sut.titleLabel
 		
 		let config = titleLbl.textColor == .black &&
 			titleLbl.font == UIFont.systemFont(ofSize: 16, weight: .bold) &&
@@ -56,12 +62,11 @@ class MusicCellTests: XCTestCase {
 		// How to test drive lbl calling sizeToFit() ?
 
 		XCTAssertTrue(config)
-		XCTAssertEqual(titleLbl.superview, cell.contentView)
+		XCTAssertEqual(titleLbl.superview, sut.contentView)
 	}
 	
 	func test_artistLabel_on_the_MusicCell() {
-		let cell = MusicCell()
-		let artistLbl = cell.artistLabel
+		let artistLbl = sut.artistLabel
 		
 		let config = artistLbl.textColor == .black &&
 			artistLbl.font == UIFont.systemFont(ofSize: 10) &&
@@ -69,28 +74,26 @@ class MusicCellTests: XCTestCase {
 			artistLbl.text == "Artist"
 
 		XCTAssertTrue(config)
-		XCTAssertEqual(artistLbl.superview, cell.contentView)
+		XCTAssertEqual(artistLbl.superview, sut.contentView)
 	}
 	
 	func test_moreButton_on_the_MusicCell() {
-		let cell = MusicCell()
-		let moreBtn = cell.moreButton
+		let moreBtn = sut.moreButton
 
 		let config = moreBtn.image(for: .normal) == UIImage(systemName: "ellipsis") &&
 			moreBtn.tintColor == .black
 
 		XCTAssertTrue(config)
-		XCTAssertEqual(moreBtn.superview, cell.contentView)
+		XCTAssertEqual(moreBtn.superview, sut.contentView)
 	}
 	
 	// MARK: Constraints
 	
 	func test_imgView_constraints() {
-		let cell = MusicCell()
-		let imgView = cell.albumImage
-		let contentView = cell.contentView
+		let imgView = sut.albumImage
+		let contentView = sut.contentView
 		
-		cell.layoutIfNeeded()
+		sut.layoutIfNeeded()
 
 		let constraints =
 			!imgView.translatesAutoresizingMaskIntoConstraints &&
@@ -103,12 +106,11 @@ class MusicCellTests: XCTestCase {
 	}
 	
 	func test_titleLabel_constraints() {
-		let cell = MusicCell()
-		let imgView = cell.albumImage
-		let titleLbl = cell.titleLabel
-		let contentView = cell.contentView
+		let imgView = sut.albumImage
+		let titleLbl = sut.titleLabel
+		let contentView = sut.contentView
 		
-		cell.layoutIfNeeded()
+		sut.layoutIfNeeded()
 		
 		let constraints =
 			!titleLbl.translatesAutoresizingMaskIntoConstraints &&
@@ -120,13 +122,12 @@ class MusicCellTests: XCTestCase {
 	}
 	
 	func test_artistLabel_constraints() {
-		let cell = MusicCell()
-		let imgView = cell.albumImage
-		let titleLbl = cell.titleLabel
-		let artistLbl = cell.artistLabel
-		let contentView = cell.contentView
+		let imgView = sut.albumImage
+		let titleLbl = sut.titleLabel
+		let artistLbl = sut.artistLabel
+		let contentView = sut.contentView
 		
-		cell.layoutIfNeeded()
+		sut.layoutIfNeeded()
 		
 		let constraints =
 			!artistLbl.translatesAutoresizingMaskIntoConstraints &&
@@ -138,11 +139,10 @@ class MusicCellTests: XCTestCase {
 	}
 	
 	func test_moreButton_constraints() {
-		let cell = MusicCell()
-		let moreBtn = cell.moreButton
-		let contentView = cell.contentView
+		let moreBtn = sut.moreButton
+		let contentView = sut.contentView
 		
-		cell.layoutIfNeeded()
+		sut.layoutIfNeeded()
 		
 		let constraints =
 			!moreBtn.translatesAutoresizingMaskIntoConstraints &&
@@ -152,7 +152,7 @@ class MusicCellTests: XCTestCase {
 		XCTAssertTrue(constraints)
 	}
 
-	// Make public function to configure the cell by passing the image, title, artist value as an arguments from the cellForRowAt function in the PlayListDataSource.
+	// Make public function to configure the sut by passing the image, title, artist value as an arguments from the sutForRowAt function in the PlayListDataSource.
 	
 	// Make prepareForReuse() function to deallocate UI elements for reusing.
 	
