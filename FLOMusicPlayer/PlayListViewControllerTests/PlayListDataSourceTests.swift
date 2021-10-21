@@ -15,7 +15,7 @@ class PlayListDataSourceTests: XCTestCase {
 	override func setUpWithError() throws {
 		try super.setUpWithError()
 		music = [
-			Music(singer: "one", album: "", title: "", duration: 0, image: "", file: "", lyrics: "")
+			Music(singer: "David Bowie", album: "The Rise and Fall of Ziggy Stardust", title: "Ziggy Stardust", duration: 220, image: "DavidBowie", file: "empty", lyrics: "some lyrics")
 		]
 		sut = PlayListDataSource(music: music)
 	}
@@ -56,17 +56,33 @@ class PlayListDataSourceTests: XCTestCase {
 		XCTAssertEqual(numOfRows, music.count)
 	}
 	
-	func test_show_data_for_rows_correctly() {
+//	func test_show_data_for_rows_correctly() {
+//		// GIVEN data source.
+//
+//		// WHEN you create table view with given data source and register reusable cell,
+//		let tableView = setTableView()
+//		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MusicCell")
+//		tableView.reloadData()
+//
+//		// THEN there should be correct data on the correct cell.
+//		let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0))
+//		XCTAssertEqual("one", cell?.textLabel?.text)
+//	}
+	
+	func test_configure_cell_correctly() {
 		// GIVEN data source.
 
 		// WHEN you create table view with given data source and register reusable cell,
 		let tableView = setTableView()
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MusicCell")
+		tableView.register(MusicCell.self, forCellReuseIdentifier: "MusicCell")
 		tableView.reloadData()
 
 		// THEN there should be correct data on the correct cell.
-		let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0))
-		XCTAssertEqual("one", cell?.textLabel?.text)
+		if let cell = tableView.dataSource?.tableView(tableView, cellForRowAt: IndexPath(row: 0, section: 0)) as? MusicCell {
+			XCTAssertEqual(cell.titleLabel.text, "Ziggy Stardust")
+			XCTAssertEqual(cell.artistLabel.text, "David Bowie")
+			XCTAssertEqual(cell.albumImage.image, UIImage(named: "DavidBowie"))
+		}
 	}
 	
 	func test_register_reusable_cell() {

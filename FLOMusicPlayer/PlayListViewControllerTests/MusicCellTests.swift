@@ -152,10 +152,7 @@ class MusicCellTests: XCTestCase {
 		XCTAssertTrue(constraints)
 	}
 
-	// Make public function to configure the sut by passing the image, title, artist value as an arguments from the sutForRowAt function in the PlayListDataSource.
+	// Configure the cell in the cellForRowAt indexPath method.
 	
-	// Make prepareForReuse() function to deallocate UI elements for reusing.
-	
-	// Declare static constant string as an identifier, so that the view controller and the data source can use the identifier.
-	
+
 }
