@@ -16,8 +16,8 @@ class PlayListViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		view.addSubview(tableView)
 		setUpTableView()
+		view.addSubview(tableView)
 	}
 	
 	func setUpTableView() {
