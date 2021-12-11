@@ -21,34 +21,41 @@ class WebServices {
 		
 		let dataTask = session.myDataTask(with: url) { data, response, error in
 			
-			// Return for invalid status
+			// Check invalid response.
 			guard let httpResponse = response as? HTTPURLResponse,
 				  (200...299).contains(httpResponse.statusCode) else {
-				
+				print("Invalid response.")
 				completion(nil, NSError(domain: "Invalid response", code: 30, userInfo: nil))
 				return
 			}
 			
+			// error should be nil.
 			guard error == nil else {
+				print("Error.")
 				completion(nil, error)
 				return
 			}
 
 			if let data = data {
-				// data is not nil but empty.
+				// Return error for empty data.
 				if data.isEmpty {
+					print("Empty data.")
 					completion(nil, NSError(domain: "Empty data", code: 20, userInfo: nil))
 					return
 				}
-			} else {
-				// data is nil.
+				// Return valid data.
+				else {
+					print("Valid request.")
+					completion(data, nil) }
+			}
+			else {
+				// Return error for nil data.
+				print("Nil return.")
 				completion(nil, NSError(domain: "Nil data", code: 10, userInfo: nil))
 				return
 			}
-
-			// Data is valid.
-			completion(data, nil)
 		}
+		
 		dataTask.resume()
 	}
 }
