@@ -13,7 +13,9 @@ class MusicCell: UITableViewCell{
 	// UI elements need to be private?
 	
 	let albumImage: UIImageView = {
-		let imgView = UIImageView(image: UIImage(named: "placeholder"))
+		let placeHolderImage = UIImage(named: "placeholder")
+		let imgView = UIImageView(image: placeHolderImage)
+		
 		imgView.contentMode = .scaleAspectFit
 		imgView.clipsToBounds = true
 		return imgView
@@ -22,7 +24,7 @@ class MusicCell: UITableViewCell{
 	let titleLabel: UILabel = {
 		let lbl = UILabel()
 		lbl.textColor = .black
-		lbl.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+		lbl.font = UIFont.systemFont(ofSize: 18, weight: .bold)
 		lbl.textAlignment = .left
 		lbl.text = "Title"
 		lbl.sizeToFit()
@@ -32,7 +34,7 @@ class MusicCell: UITableViewCell{
 	let artistLabel: UILabel = {
 		let lbl = UILabel()
 		lbl.textColor = .black
-		lbl.font = UIFont.systemFont(ofSize: 10)
+		lbl.font = UIFont.systemFont(ofSize: 12)
 		lbl.textAlignment = .left
 		lbl.text = "Artist"
 		return lbl

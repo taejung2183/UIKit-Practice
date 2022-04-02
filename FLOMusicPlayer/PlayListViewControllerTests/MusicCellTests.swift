@@ -30,7 +30,7 @@ class MusicCellTests: XCTestCase {
 		let music = [
 			Music(singer: "one", album: "", title: "", duration: 0, image: "", file: "", lyrics: "")
 		]
-		vc.dataSource = PlayListDataSource(music: music)
+		vc.dataSource = PlayListDataSource(musicArray: music, albumImageArray: [])
 		vc.loadViewIfNeeded()
 		
 		let cell = vc.tableView.dataSource?.tableView(vc.tableView, cellForRowAt: IndexPath(row: 0, section: 0))
@@ -56,7 +56,7 @@ class MusicCellTests: XCTestCase {
 		let titleLbl = sut.titleLabel
 		
 		let config = titleLbl.textColor == .black &&
-			titleLbl.font == UIFont.systemFont(ofSize: 16, weight: .bold) &&
+			titleLbl.font == UIFont.systemFont(ofSize: 18, weight: .bold) &&
 			titleLbl.textAlignment == .left &&
 			titleLbl.text == "Title"
 		// How to test drive lbl calling sizeToFit() ?
@@ -69,7 +69,7 @@ class MusicCellTests: XCTestCase {
 		let artistLbl = sut.artistLabel
 		
 		let config = artistLbl.textColor == .black &&
-			artistLbl.font == UIFont.systemFont(ofSize: 10) &&
+			artistLbl.font == UIFont.systemFont(ofSize: 12) &&
 			artistLbl.textAlignment == .left &&
 			artistLbl.text == "Artist"
 
@@ -153,6 +153,4 @@ class MusicCellTests: XCTestCase {
 	}
 
 	// Configure the cell in the cellForRowAt indexPath method.
-	
-
 }

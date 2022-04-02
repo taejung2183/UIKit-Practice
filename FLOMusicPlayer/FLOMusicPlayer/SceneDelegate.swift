@@ -17,14 +17,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		
 		let window = UIWindow(windowScene: windowScene)
 		
-		let music = [
+		let musicArray = [
 			Music(singer: "David Bowie", album: "The Rise and Fall of Ziggy Stardust", title: "Ziggy Stardust", duration: 220, image: "DavidBowie", file: "empty", lyrics: "some lyrics"),
 			Music(singer: "The Beatles", album: "Abbey Road", title: "Octopus's Garden", duration: 230, image: "AbbeyRoad", file: "empty", lyrics: "some lyrics")
 		]
-		let dataSource = PlayListDataSource(music: music)
-		
+		let albumImageArray = [
+			UIImage(named: "DavidBowie")!, UIImage(named: "AbbeyRoad")!
+		]
+
 		let vc = PlayListViewController()
-		vc.dataSource = dataSource
+		vc.dataSource = PlayListDataSource(musicArray: musicArray, albumImageArray: albumImageArray)
 		
 		window.rootViewController = vc
 		self.window = window

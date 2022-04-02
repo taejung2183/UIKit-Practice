@@ -11,13 +11,17 @@ import XCTest
 class PlayListDataSourceTests: XCTestCase {
 	private var sut: PlayListDataSource!
 	private var music: [Music]!
+	private var image: [UIImage]!
 	
 	override func setUpWithError() throws {
 		try super.setUpWithError()
 		music = [
 			Music(singer: "David Bowie", album: "The Rise and Fall of Ziggy Stardust", title: "Ziggy Stardust", duration: 220, image: "DavidBowie", file: "empty", lyrics: "some lyrics")
 		]
-		sut = PlayListDataSource(music: music)
+		image = [
+			UIImage(named: "DavidBowie")!
+		]
+		sut = PlayListDataSource(musicArray: music, albumImageArray: image)
 	}
 	
 	override func tearDownWithError() throws {
@@ -77,7 +81,7 @@ class PlayListDataSourceTests: XCTestCase {
 		tableView.register(MusicCell.self, forCellReuseIdentifier: "MusicCell")
 		tableView.reloadData()
 
-		// THEN there should be correct data on the correct cell.
+		// THEN there should be correct data on the cell.
 		if let cell = tableView.dataSource?.tableView(tableView, cellForRowAt: IndexPath(row: 0, section: 0)) as? MusicCell {
 			XCTAssertEqual(cell.titleLabel.text, "Ziggy Stardust")
 			XCTAssertEqual(cell.artistLabel.text, "David Bowie")
