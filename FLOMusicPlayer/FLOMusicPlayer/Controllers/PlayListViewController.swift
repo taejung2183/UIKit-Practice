@@ -64,6 +64,5 @@ class PlayListViewController: UIViewController {
 				
 			} catch { fatalError("ERROR INFO: \(error)") }
 		}
-		
 	}
 }

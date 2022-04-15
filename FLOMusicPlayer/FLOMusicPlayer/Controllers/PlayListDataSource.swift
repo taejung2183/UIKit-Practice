@@ -34,7 +34,6 @@ class PlayListDataSource: NSObject, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//		_musicArray?.count ?? 0
 		_albumImageArray?.count ?? 0
 	}
 	
@@ -51,10 +50,9 @@ class PlayListDataSource: NSObject, UITableViewDataSource {
 			image = imageArr[indexPath.row]
 		}
 		else {
-			// Access only when the download is done.
+			// Access only when the download is done.(Or index out of range.)
 			if (_isLoaded) {
 				image = imageArr[indexPath.row]
-				
 			} else {
 				image = UIImage(named: "placeholder")!
 			}
